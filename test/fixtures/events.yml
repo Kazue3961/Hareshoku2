@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  season_id: 1
+  date: 2020-10-09
+  name: MyString
+  food: MyString
+  introduction: MyText
+  event_image_id: MyString
+
+two:
+  season_id: 1
+  date: 2020-10-09
+  name: MyString
+  food: MyString
+  introduction: MyText
+  event_image_id: MyString
