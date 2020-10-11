@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+#global-head {
+  position: fixed;
+  color: #7a4171;
+  width: 260px;
+  text-align: center;
+  padding-top: 60px;
+  z-index: 100;
+}
+
+#sidebar {
+  font-size: 15px;
+  padding-top: 120px;
+  width: 260px;
+  height: 100%;
+  position: fixed;
+  color: #7a4171;
+  background: #fff;
+  text-align: center;
+}
+
+#global-nav ul {
+  list-style: none;
+  margin-left: 0;
+  padding: 0px;
+}
+#global-nav > ul > li {
+  position: relative;
+}
+
+#global-nav a {
+  color: #7a4171;
+  text-decoration: none;
+  display: block;
+  padding: 15px 0;
+  transition: background-color .3s linear;
+}
+
+/* sub-menu */
+#global-nav .sub-menu-nav {
+  position: fixed;
+  background: #7a4171;
+  color: #fff;
+  top: 0;
+  padding-top: 90px;
+  left: 260px;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  transition: width .2s ease-out;
+}
+
+/* nav-toggle */
+#nav-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  height: 32px;
+}
+
+#main-in {
+  padding-left: 290px;
+}
+
+#main .inner {
+  padding: 60px;
+}
+
+
+.container {
+  display: flex;
+}
+.category {
+  padding: 10px 0px;
+  margin: 5px;
+  display: flex;
+  justify-content: center; /* 追加 */
+  // text-align: center;
+  float: left;
+}
+img {
+  max-width: 60%;
+  height: auto;
+}

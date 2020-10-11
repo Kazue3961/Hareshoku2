@@ -1,2 +1,6 @@
-<h1>Admins::Seasons#edit</h1>
-<p>Find me in app/views/admins/seasons/edit.html.erb</p>
+<h1>行事季節編集</h1>
+<%= form_for(@season, url:admins_season_path(@season.id)) do |f| %>
+  <%= f.label "行事季節" %>
+  <%= f.text_field :name %>
+  <%= f.submit '変更を保存する', class: "btn btn-primary btn-md" %>
+<% end %>

@@ -1,2 +1,29 @@
-<h1>Admins::Seasons#index</h1>
-<p>Find me in app/views/admins/seasons/index.html.erb</p>
+<h1>行事季節一覧・追加</h1>
+
+<!-- 季節追加 -->
+<%= form_for(@season, url:admins_seasons_path) do |f| %>
+  <%= f.label "行事季節" %>
+  <%= f.text_field :name %>
+  <%= f.submit '追加する', class: "btn btn-primary btn-md" %>
+<% end %>
+
+<!-- 季節一覧 -->
+<table class="table">
+  <thead>
+    <tr>
+      <th>季節</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @seasons.each do |season| %>
+    <tr>
+      <td><%= season.name %></td>
+      <td>
+        <%= link_to edit_admins_season_path(season) do %>
+        <label class="btn btn-primary btn-md">編集する</label>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

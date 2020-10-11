@@ -10,6 +10,56 @@
   </head>
 
   <body>
+    <header id="global-head">
+      <h1 id="logo">Logo</h1>
+    </header>
+
+    <div id="nav-toggle">
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <aside id="sidebar">
+      <nav id="global-nav">
+        <ul>
+          <li class="sub-menu">
+
+            <% if member_signed_in? %>
+            <li><%= link_to "top", root_path %></li>
+            <li><%= link_to "about", about_path %></li>
+            <li><%= link_to "mypage", posts_path %></li>
+            <li><%= link_to "log_out", destroy_member_session_path, method: :delete %>
+            </li>
+            <li>検索</li>
+
+          <% elsif admin_signed_in? %>
+            <li><%= link_to "top", admins_top_path %></li>
+            <li><%= link_to "行事一覧", admins_events_path %></li>
+            <li><%= link_to "季節一覧", admins_seasons_path %></li>
+            <li><%= link_to "会員一覧", admins_members_path %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+            <li>検索</li>
+
+          <% else %>
+            <li><%= link_to "top", root_path %></li>
+            <li><%= link_to "about", about_path %></li>
+            <li><%= link_to "新規登録", new_member_registration_path %></li>
+            <li><%= link_to "ログイン", new_member_session_path %></li>
+            <li>検索</li>
+          <% end %>
+        </ul>
+      </nav>
+    </aside>
+
+       <main id="main">
+    <div id="main-in">
+
     <%= yield %>
+  </div>
+</main>
+
   </body>
 </html>

@@ -1,2 +1,25 @@
-<h1>Members::Members#show</h1>
-<p>Find me in app/views/members/members/show.html.erb</p>
+<div class="profile-container">
+  <h3 class="profile-name"><%= @member.name %> mypage</h3>
+
+　<h2>プロフィール詳細</h2>
+  <table class="table">
+  　<tr>
+    　<th>名前</th>
+    　<td><%= @member.name %></td>
+  　</tr>
+  　<tr>
+    　<th>プロフィール</th>
+    　<td><%= @member.profile %></td>
+  　</tr>
+  　<tr>
+    　<th>メールアドレス</th>
+    　<td><%= @member.email %><br>
+    　公開されることはありません</td>
+  　</tr>
+  　<tr>
+    　<th>プロフィール画像</th>
+    　<td><%= attachment_image_tag(@member, :profile_image, :size => "100x100", fallback: "no_image.jpg") %></td>
+　</table>
+
+  <%= link_to "プロフィールを編集する", edit_member_path, class: "btn btn-primary" %>
+</div>
