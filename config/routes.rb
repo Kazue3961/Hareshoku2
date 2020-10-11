@@ -6,15 +6,19 @@ Rails.application.routes.draw do
   registrations: 'members/registrations'
   }
 
-  root'home#top'
-  get 'home/top' => 'home#top'
-  get 'home/about' => 'home#about'
-  resources :members, only: [:show, :edit, :update]
-  resources :posts
-  resources :favorites, only: [:index, :create, :destroy]
-  resources :comments, only: [:index, :create, :destroy]
-  resources :events, only: [:index]
-
+  scope module: :members do
+    root 'home#top'
+    get 'home/top' => 'home#top'
+    get 'about' => 'home#about', as: 'about'
+    get 'search' => 'home#search', as: 'search'
+    patch 'members/withdraw' => 'members#withdraw'
+    put 'members/withdraw' => 'members#withdraw'
+    resources :members, only: [:show, :edit, :update]
+    resources :posts
+    resources :favorites, only: [:index, :create, :destroy]
+    resources :comments, only: [:index, :create, :destroy]
+    resources :events, only: [:index]
+  end
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -23,8 +27,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    root 'home#top'
-    get 'home/top' => 'home#top'
+    get 'top' => 'home#top', as: 'top'
     resources :seasons, only: [:index, :create, :edit, :update, :destroy]
     resources :events
     resources :members, only: [:index, :show, :edit, :update]

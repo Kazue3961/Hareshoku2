@@ -1,0 +1,37 @@
+<%= form_for(@event, url: url) do |f| %>
+	<dl>
+		<dt><%= f.label "行事季節" %></dt>
+		<dd><%= f.collection_select :season_id, Season.all, :id, :name %></dd>
+
+		<dt><%= f.label "行事日" %></dt>
+		<dd><%= f.date_field :date %></dd>
+
+		<dt><%= f.label "行事名" %></dt>
+		<dd><%= f.text_field :name %></dd>
+
+		<dt><%= f.label "行事食" %></dt>
+		<dd><%= f.text_field :food %></dd>
+
+		<dt><%= f.label "行事説明" %></dt>
+		<dd><%= f.text_area :introduction %></dd>
+
+		<div class="event_image">
+			<%= attachment_image_tag event, :event_image, class: "img", fallback: "no_image.jpg", size:"300x240" %>
+			<%= f.attachment_field :event_image %>
+		</div>
+
+		<!-- 画像プレビュー -->
+		<script>
+			   $(function(){
+		       	$('#event_image').on('change', function (e) {
+		       		var reader = new FileReader();
+		    		reader.onload = function (e) {
+		    			$(".event_image").attr('src', e.target.result);
+		    		}
+		    		reader.readAsDataURL(e.target.files[0]);
+		    	});
+		       });
+		    </script>
+
+		<%= f.submit submit , class: "btn btn-primary btn-md" %>
+<% end %>
