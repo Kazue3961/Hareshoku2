@@ -4,13 +4,16 @@ class Member < ApplicationRecord
 	devise :database_authenticatable, :registerable,
 				 :recoverable, :rememberable, :validatable
 
-	has_many :posts
-	has_many :favorites
-	has_many :comments
+	has_many :posts, dependent: :destroy
+	has_many :favorites, dependent: :destroy
+	has_many :comments, dependent: :destroy
 
   attachment :profile_image, destroy: false
 
   validates :name, presence: true
-  validates :profile, presence: true, length: { minimum: 2 }
+
+  def active_for_authentication?
+    super && (self.is_active == true)
+  end
 
 end

@@ -2,7 +2,8 @@ class Members::MembersController < ApplicationController
   before_action :authenticate_member!
 
   def show
-    @member = current_member
+    @member = Member.find(params[:id])
+    @posts = @member.posts
   end
 
   def edit
@@ -22,6 +23,7 @@ class Members::MembersController < ApplicationController
     @member = current_member
     @member.update(is_active: false)
     reset_session
+    flash[:notice] = "ご利用ありがとうございました。"
     redirect_to root_path
   end
 

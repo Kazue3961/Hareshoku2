@@ -1,0 +1,23 @@
+<%= form_for(@post, url: url) do |f| %>
+
+  <dl>
+    <dt><%= f.label "楽しむ日" %></dt>
+    <dd><%= f.date_field :date %></dd>
+
+    <dt><%= f.label "行事名" %></dt>
+    <dd><%= f.collection_select :event_id, Event.all, :id, :name %></dd>
+
+    <dt><%= f.label "ハレ食(行事食)" %></dt>
+    <dd><%= f.text_field :food %></dd>
+
+    <dt><%= f.label "詳しく" %></dt>
+    <dd><%= f.text_area :content %></dd>
+
+    <div class="image_field">
+      <%= attachment_image_tag post, :food_image, class: "img", fallback: "no_image.jpg", size:"240x240" %>
+      <%= f.attachment_field :food_image %>
+    </div>
+  </dl>
+
+  <%= f.submit submit , class: "btn btn-primary btn-md" %>
+<% end %>

@@ -1,5 +1,5 @@
 <div class="profile-container">
-  <h3 class="profile-name"><%= @member.name %> mypage</h3>
+<%= render 'members/members/profile', member: @member %>
 
 　<h2>プロフィール編集</h2>
   <%= form_for(@member) do |f| %>
