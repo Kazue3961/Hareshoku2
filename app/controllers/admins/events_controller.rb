@@ -1,7 +1,7 @@
 class Admins::EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.all.order(season_id: :DESC)
   end
 
   def new
@@ -32,6 +32,13 @@ class Admins::EventsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to admins_events_path
+    flash[:info] = "イベントを削除しました"
   end
 
   private

@@ -11,12 +11,14 @@
 <table class="table">
   <thead>
     <tr>
-      <th>季節</th>
+      <th>ID</th>
+      <th>季節名</th>
     </tr>
   </thead>
   <tbody>
     <% @seasons.each do |season| %>
     <tr>
+      <td><%= season.id %></td>
       <td><%= season.name %></td>
       <td>
         <%= link_to edit_admins_season_path(season) do %>

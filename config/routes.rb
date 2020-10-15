@@ -11,12 +11,13 @@ Rails.application.routes.draw do
     get 'home/top' => 'home#top'
     get 'about' => 'home#about', as: 'about'
     get 'search' => 'home#search', as: 'search'
-    patch 'members/withdraw' => 'members#withdraw'
+    patch 'members/withdraw' => 'members#withdraw', as: 'members_withdraw'
     put 'members/withdraw' => 'members#withdraw'
     resources :members, only: [:show, :edit, :update]
-    resources :posts
+    resources :posts do
     resources :favorites, only: [:index, :create, :destroy]
     resources :comments, only: [:index, :create, :destroy]
+    end
     resources :events, only: [:index]
   end
 

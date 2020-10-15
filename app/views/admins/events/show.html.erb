@@ -28,7 +28,11 @@
     <div class="img_field">
       <%= attachment_image_tag(@event, :event_image, :size => '300x240', fallback: "no_image.jpg") %>
     </div>
+  </table>
 
     <%= link_to edit_admins_event_path do %>
-    <label class="btn btn-primary btn-md">編集する</label>
+      <button type="button" class="btn btn-primary">編集する</button>
+    <% end %>
+    <%= link_to admins_events_path do %>
+      <button type="button" class="btn btn-primary">一覧ページへ戻る</button>
     <% end %>

@@ -1,2 +1,91 @@
-<h1>Members::Posts#show</h1>
-<p>Find me in app/views/members/posts/show.html.erb</p>
+
+<%= render 'members/members/profile', member: @member %>
+
+<h1>投稿詳細</h1>
+
+  <div class="img_field">
+    <%= attachment_image_tag(@post, :food_image, :size => '240x240', fallback: "no_image.jpg") %>
+  </div>
+  <table>
+    <tr>
+      <th>楽しむ日</th>
+      <td><%= @post.date %></td>
+    </tr>
+
+    <tr>
+      <th>行事名</th>
+      <td><%= @post.event.name %></td>
+    </tr>
+
+    <tr>
+      <th>ハレ食(行事食)</th>
+      <td><%= @post.food %></td>
+    </tr>
+
+    <tr>
+      <th>詳しく</th>
+      <td><%= @post.content %></td>
+    </tr>
+
+    <tr>
+      <th>投稿者</th>
+      <td>by<%= @post.member.name %></td>
+    </tr>
+  </table>
+
+
+ <div class="favorte">
+  <% if @post.favorited_by?(current_member) %></td>
+            <td><%= link_to post_favorite_path(@post.id),  method: :delete do %>いいね
+              🖤 <%= @post.favorites.count %></td>
+                <% end %>
+            <% else %>
+            <td><%= link_to post_favorites_path(@post.id),  method: :post do %>いいね
+              🤍 <%= @post.favorites.count %></td>
+                <% end %>
+            <% end %>
+                <p>※いいねしたらコメントを送ろう！</p>
+          </div>
+
+ <div class="comment">
+  <table>
+  コメント　<%= @post.comments.count %>
+  <thead>
+    <tr>
+      <th>投稿者</th>
+      <th>コメント</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @comments.each do |comment| %>
+  <tr>
+  　<td><%= comment.member.name %></td>
+    <td><%= comment.comment %></td>
+      <% if current_member. == comment.member %>
+      <td><%= link_to "destroy", post_comment_path(@post, comment), method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+</div>
+
+
+  <div class="comment_form">
+    <% if @post.favorited_by?(current_member) %>
+        <%= form_for [@post, @comment] do |f| %>
+        <%= f.text_area :comment, size: "90x5" %>
+        <%= f.submit 'コメント投稿する', class: "btn btn-primary" %>
+        <% end %>
+        <% end %>
+      </div>
+
+
+
+    <%= link_to edit_post_path do %>
+      <button type="button" class="btn btn-primary">編集する</button>
+    <% end %>
+    <%= link_to posts_path do %>
+      <button type="button" class="btn btn-primary">一覧ページへ</button>
+    <% end %>

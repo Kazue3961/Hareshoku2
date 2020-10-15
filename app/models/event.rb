@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
 
 	belongs_to :season
-	has_many :posts
+	has_many :posts, dependent: :destroy
 
   attachment :event_image, destroy: false
 

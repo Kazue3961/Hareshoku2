@@ -30,7 +30,7 @@
             <% if member_signed_in? %>
             <li><%= link_to "top", root_path %></li>
             <li><%= link_to "about", about_path %></li>
-            <li><%= link_to "mypage", posts_path %></li>
+            <li><%= link_to "mypage", member_path(id: current_member.id) %></li>
             <li><%= link_to "log_out", destroy_member_session_path, method: :delete %>
             </li>
             <li>検索</li>

@@ -1,2 +1,7 @@
-<h1>Members::Posts#new</h1>
-<p>Find me in app/views/members/posts/new.html.erb</p>
+
+<%= render 'members/members/profile', member: @member %>
+
+<h1>新規投稿</h1>
+
+<%= render 'form', post: @post, url: posts_path, submit: '投稿する' %>
+

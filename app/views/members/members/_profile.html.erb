@@ -1,4 +1,14 @@
-<h2>mypage</h2>
+<h1><%= @member.name %>mypage</h1>
   <div>
-    <%= attachment_image_tag member, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %></div>
-    <div><%= member.profile %>
+    <%= attachment_image_tag member, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
+    <%= member.profile %></div>
+
+    <table>
+  <thead>
+    <tr>
+    <th><%= link_to "投稿したハレ食", member_path(current_member), class: "btn btn-primary" %></th>
+    <th><%= link_to "いいね・コメントしたハレ食", post_favorites_path(current_member), class: "btn btn-primary" %></th>
+    <th><%= link_to "プロフィール編集", edit_member_path(current_member), class: "btn btn-primary" %></th>
+  </tr>
+</thead>
+<table>

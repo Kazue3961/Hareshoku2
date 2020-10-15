@@ -1,2 +1,32 @@
-<h1>Admins::Members#edit</h1>
-<p>Find me in app/views/admins/members/edit.html.erb</p>
+<h1><%= @member.name %> さんの詳細</h1>
+
+<%= form_for(@member, url: admins_member_path) do |f| %>
+  <div class="form_group">
+    <dl>
+      <dt><%= f.label "名前" %></dt>
+        <dd><%= f.text_field :name %></dd>
+
+  　  <dt><%= f.label :プロフィール %></dt>
+        <dd><%= f.text_area :profile %></dd>
+
+      <dt><%= f.label :メールアドレス %></dt>
+        <dd><%= f.text_field :email %></dd>
+
+      <dt><%= f.label :会員ステータス %></dt>
+        <dd><%= f.radio_button :is_active, :true %>
+            <%= f.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
+            <%= f.radio_button :is_active, :false %>
+            <%= f.label :is_active, "無効", {value: :false, style: "display: inline-block;"} %>
+        </dd>
+    </dl>
+
+    <%= f.label :profile_image, "画像" %>
+    <div class="image_field">
+      <%= attachment_image_tag @profile, :profile_image, id: "img_prev", class: "img", fallback: "no_image.jpg", size:"150x150" %>
+        <%= f.attachment_field :profile_image %>
+        </div>
+    </div>
+
+  <%= f.submit "変更を保存する", class: "btn btn-primary" %>
+</div>
+<% end %>

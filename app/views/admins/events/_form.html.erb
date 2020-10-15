@@ -14,8 +14,9 @@
 
 		<dt><%= f.label "行事説明" %></dt>
 		<dd><%= f.text_area :introduction %></dd>
+	</dl>
 
-		<div class="event_image">
+		<div class="image_field">
 			<%= attachment_image_tag event, :event_image, class: "img", fallback: "no_image.jpg", size:"300x240" %>
 			<%= f.attachment_field :event_image %>
 		</div>
