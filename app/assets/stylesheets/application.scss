@@ -14,88 +14,211 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
-#global-head {
-  position: fixed;
-  color: #7a4171;
-  width: 260px;
-  text-align: center;
-  padding-top: 60px;
-  z-index: 100;
-}
 
-#sidebar {
-  font-size: 15px;
-  padding-top: 120px;
-  width: 260px;
-  height: 100%;
-  position: fixed;
-  color: #7a4171;
-  background: #fff;
-  text-align: center;
+@media (min-width: 768px) {
+  .container {
+    width: 503px;
+  }
 }
-
-#global-nav ul {
-  list-style: none;
-  margin-left: 0;
-  padding: 0px;
+@media (min-width: 992px) {
+  .container {
+    width: 723px;
+  }
 }
-#global-nav > ul > li {
-  position: relative;
+@media (min-width: 1200px) {
+  .container {
+    width: 923px;
+  }
 }
-
-#global-nav a {
-  color: #7a4171;
-  text-decoration: none;
-  display: block;
-  padding: 15px 0;
-  transition: background-color .3s linear;
+@media (min-width: 1432px) {
+  .container {
+    width: 1170px;
+  }
 }
-
-/* sub-menu */
-#global-nav .sub-menu-nav {
-  position: fixed;
-  background: #7a4171;
-  color: #fff;
-  top: 0;
-  padding-top: 90px;
-  left: 260px;
-  width: 0;
-  height: 100%;
-  overflow: hidden;
-  transition: width .2s ease-out;
-}
-
-/* nav-toggle */
-#nav-toggle {
-  display: none;
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  height: 32px;
-}
-
-#main-in {
-  padding-left: 290px;
-}
-
-#main .inner {
-  padding: 60px;
-}
-
 
 .container {
-  display: flex;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
-.category {
-  padding: 10px 0px;
-  margin: 5px;
-  display: flex;
-  justify-content: center; /* 追加 */
-  // text-align: center;
-  float: left;
+
+
+//table関係//
+
+
+//共通//
+dl dd {
+  padding-bottom: 25px;
 }
+
+h1, h2 {
+  margin-top: 50px;
+  padding-bottom: 30px;
+}
+
+//sign_in up//
+.field {
+  margin-bottom: 20px;
+}
+.actions {
+  margin-bottom: 10px;
+}
+
+//top//
 img {
-  max-width: 60%;
-  height: auto;
+  height: 10em;
 }
+
+.calendar {
+  margin-top: 10em;
+}
+
+
+
+//event-index//
+.post-content {
+  text-align: center;
+}
+
+
+
+.container-small, .container-large {
+  max-width: 100%;
+}
+
+.event-area {
+  padding-left: 5em;
+}
+
+
+//member//
+.profile-menu {
+  margin-bottom: 5em;
+}
+
+.mypage-main-area {
+  margin-bottom: 5em;
+}
+
+.food_image {
+  width: 150px;
+  object-fit: cover; //画像が潰れないように//
+}
+
+
+
+
+
+body {
+  padding-top: 70px;
+  // min-height: 200vh;
+}
+@media (min-width: 768px) {
+  body {
+    padding-top: 0;
+  }
+}
+@media (min-width: 768px) {
+  body {
+    margin-left: 250px;
+  }
+}
+
+
+a {
+  text-align: center;
+  color: #765c47;
+}
+
+// sidebar //
+
+.navbar-fixed-left {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+}
+.navbar-inverse {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .navbar-fixed-left {
+    width: 250px;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .navbar-fixed-left .container,{
+    padding-right: 0;
+    padding-left: 0;
+    width: auto;
+  }
+  .navbar-fixed-left .navbar-header {
+    float: none;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .navbar-fixed-left .navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+    max-height: none;
+  }
+  .navbar-fixed-left .navbar-collapse .navbar-nav {
+    float: none !important;
+  }
+  .navbar-fixed-left .navbar-collapse .navbar-nav > li {
+    width: 100%;
+  }
+  .navbar-fixed-left .navbar-collapse .navbar-nav > li.dropdown .dropdown-menu {
+    top: 0;
+  }
+  .navbar-fixed-left .navbar-collapse .navbar-nav.navbar-right {
+    margin-right: 0;
+  }
+  .logo {
+    padding-top: 25px;
+    width: 210px;
+    height: auto;
+  }
+  .navbar-toggle {
+    border-color: #69821b;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .navbar-fixed-left {
+    right: auto !important;
+    left: 0 !important;
+    border-width: 0 1px 0 0 !important;
+  }
+  .navbar-fixed-left .dropdown .dropdown-menu {
+    left: 100%;
+    right: auto;
+    border-radius: 0 3px 3px 0;
+  }
+  .navbar-fixed-left .dropdown .dropdown-toggle .caret {
+    border-top: 4px solid transparent;
+    border-left: 4px solid;
+    border-bottom: 4px solid transparent;
+    border-right: none;
+  }
+}
+
+.search {
+  margin: 40px 30px;
+}
+
+
+footer {
+  margin: 100px 0 50px 0;
+  text-align: center;
+}
+
+

@@ -1,31 +1,37 @@
-<div class="profile-container">
-<%= render 'members/members/profile', member: @member %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="profile-area col-xs-12">
+      <%= render 'members/members/profile', member: @member %>
+    </div>
 
-　<h2>プロフィール編集</h2>
-  <%= form_for(@member) do |f| %>
-  <div class="form_group">
-    <dl>
-      <dt><%= f.label "名前" %></dt>
-        <dd><%= f.text_field :name %></dd>
+    <div class="mypage-main-area col-xs-12">
+      <h2>プロフィール編集</h2>
+        <div class="row">
+          <%= form_for(@member) do |f| %>
+          <div class="image-field col-xs-12 col-md-3">
+            <%= attachment_image_tag @profile, :profile_image, id: "img_prev", class: "img", fallback: "no_image.jpg" %>
+            <%= f.attachment_field :profile_image %>
+          </div>
 
-  　  <dt><%= f.label :プロフィール %></dt>
-        <dd><%= f.text_area :profile %></dd>
+          <div class="mypage-form-field col-xs-12 col-md-8">
+            <dl>
+              <dt><%= f.label "名前" %></dt>
+              <dd><%= f.text_field :name %></dd>
+              <dt><%= f.label :プロフィール %></dt>
+              <dd><%= f.text_area :profile %></dd>
+              <dt><%= f.label :メールアドレス %></dt>
+              <dd><%= f.text_field :email %><br>
+                公開されることはありません</dd>
+            </dl>
+          </div>
 
-      <dt><%= f.label :メールアドレス %></dt>
-        <dd><%= f.text_field :email %><br>
-          公開されることはありません</dd>
-    </dl>
-    <%= f.label :profile_image, "画像" %>
-    <div class="image_field">
-      <%= attachment_image_tag @profile, :profile_image, id: "img_prev", class: "img", fallback: "no_image.jpg", size:"150x150" %>
-        <%= f.attachment_field :profile_image %>
+          <div class="select-button col-xs-12">
+            <%= f.submit "変更する", class: "btn btn-primary" %>
+            <%= link_to "退会する", members_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+            <% end %>
+          </div>
         </div>
     </div>
 
   </div>
-
-  <%= f.submit "変更する", class: "btn btn-primary" %>
-  <%= link_to "退会する", members_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
-  <% end %>
-
 </div>

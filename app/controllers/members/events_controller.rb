@@ -4,6 +4,7 @@ class Members::EventsController < ApplicationController
     @season = Season.find(params[:season_id])
     @events = Event.where(season_id: params[:season_id])
     @posts = Post.where(event_id: params[:season_id])
+    @member = Member.where(member_id: params[:post_id])
   end
 
 end

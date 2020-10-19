@@ -1,7 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="profile-area col-xs-12">
+      <%= render 'members/members/profile', member: @member %>
+    </div>
 
-<%= render 'members/members/profile', member: @member %>
+    <div class="mypage-form-area col-xs-12">
+      <h1>新規投稿</h1>
+        <%= render 'form', post: @post, url: posts_path, submit: '投稿する' %>
+    </div>
 
-<h1>新規投稿</h1>
-
-<%= render 'form', post: @post, url: posts_path, submit: '投稿する' %>
+  </div>
+</div>
 

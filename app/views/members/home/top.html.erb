@@ -1,31 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="main-visual" style="margin:50px; text-align: center;">
+        <%= image_tag "autumn.jpg" %>
+      </div>
 
-<div class="main-visual" style="margin-top:50px; text-align: center;">
-  <%= image_tag 'autumn', :width => '70%' %>
+      <div class="category col-xs-12">
+        <div class="category-img col-xs-6 col-md-3">
+          <%= link_to(image_tag("autumn.jpg"), controller: "events", action: "index", season_id: 1) %>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <%= link_to(image_tag("autumn.jpg"), controller: "events", action: "index", season_id: 2) %>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <%= link_to(image_tag("autumn.jpg"), controller: "events", action: "index", season_id: 3) %>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <%= link_to(image_tag("autumn.jpg"), controller: "events", action: "index", season_id: 4) %>
+        </div>
+      </div>
+
+      <div class="calendar col-xs-12">
+        <div class="col-xs-12　col-md-6">
+          <%= month_calendar events: @events do |date, events| %>
+          <%= date.day %>
+          <% events.each do |event| %>
+          <div>
+            <%= event.name %>
+            <%= event.food %>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
-
-<div class="container">
-  <div class="category">
-    <%= link_to(image_tag("autumn.jpg"), controller: "events", action: "index", season_id: 1) %>
-  </div>
-  <div class="category">
-    <%= link_to(image_tag("autumn.jpg"), controller: "events", action: "index", season_id: 2) %>
-  </div>
-  <div class="category">
-    <%= link_to(image_tag("autumn.jpg"), controller: "events", action: "index", season_id: 3) %>
-  </div>
-  <div class="category">
-    <%= link_to(image_tag("autumn.jpg"), controller: "events", action: "index", season_id: 4) %>
-  </div>
-</div>
-
-
-<%= month_calendar do |date,event| %>
-  <%= date.day %>
-  <% @events.each do |event| %>
-
-  <div>
-    <%= event.name %>
-
-</div>
-<% end %>
-<% end %>

@@ -1,4 +1,5 @@
 class Admins::EventsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @events = Event.all.order(season_id: :DESC)
@@ -43,6 +44,6 @@ class Admins::EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:season_id, :date, :name, :food, :introduction, :event_image)
+    params.require(:event).permit(:season_id, :start_time, :name, :food, :introduction, :event_image)
   end
 end

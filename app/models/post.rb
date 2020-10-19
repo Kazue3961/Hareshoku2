@@ -15,8 +15,16 @@ class Post < ApplicationRecord
     favorites.where(member_id: member.id).exists?
   end
 
-  def  commented_by?(member)
+  def commented_by?(member)
     comments.where(member_id: member.id).exists?
+  end
+
+  def Post.search(search, post_or_member)
+    if post_or_member == "1"
+      Post.where(['food LIKE ?', "%#{search}%"])
+    else
+      Post.all
     end
+  end
 
 end

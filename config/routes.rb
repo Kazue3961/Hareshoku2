@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     root 'home#top'
     get 'home/top' => 'home#top'
     get 'about' => 'home#about', as: 'about'
-    get 'search' => 'home#search', as: 'search'
     patch 'members/withdraw' => 'members#withdraw', as: 'members_withdraw'
     put 'members/withdraw' => 'members#withdraw'
+    get 'search' => 'posts#search'
     resources :members, only: [:show, :edit, :update]
     resources :posts do
     resources :favorites, only: [:index, :create, :destroy]

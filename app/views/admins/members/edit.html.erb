@@ -1,22 +1,22 @@
 <h1><%= @member.name %> さんの詳細</h1>
 
-<%= form_for(@member, url: admins_member_path) do |f| %>
+<%= form_for(@member, url: admins_member_path(@member)) do |f| %>
   <div class="form_group">
     <dl>
       <dt><%= f.label "名前" %></dt>
         <dd><%= f.text_field :name %></dd>
 
-  　  <dt><%= f.label :プロフィール %></dt>
+  　  <dt><%= f.label "プロフィール" %></dt>
         <dd><%= f.text_area :profile %></dd>
 
-      <dt><%= f.label :メールアドレス %></dt>
+      <dt><%= f.label "メールアドレス" %></dt>
         <dd><%= f.text_field :email %></dd>
 
-      <dt><%= f.label :会員ステータス %></dt>
-        <dd><%= f.radio_button :is_active, :true %>
-            <%= f.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
-            <%= f.radio_button :is_active, :false %>
-            <%= f.label :is_active, "無効", {value: :false, style: "display: inline-block;"} %>
+      <dt><%= f.label "会員ステータス" %></dt>
+        <dd><%= f.radio_button :is_active, true %>
+            <%= f.label :is_active, "有効", class: "text-active" %>
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, "退会済み", class: "text-invalid" %>
         </dd>
     </dl>
 
