@@ -4,23 +4,40 @@
 <label class="btn btn-primary btn-md">新規登録する</label>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>行事ID</th>
-      <th>行事名</th>
-      <th>行事食</th>
-      <th>行事季節</th>
-    </tr>
-  </thead>
-  <tbody>
+  <table>
+    <thead>
+      <tr>
+        <th>行事ID</th>
+        <th>行事日</th>
+        <th>行事名</th>
+        <th>行事食</th>
+        <th>行事季節</th>
+      </tr>
+    </thead>
+    <tbody>
     <% @events.each do |event| %>
       <tr>
         <td><%= event.id %></td>
+        <td><%= event.start_time %></td>
         <td><%= link_to event.name, admins_event_path(event.id), class: "underline" %></td>
-        <td><%= event.name %></td>
+        <td><%= event.food %></td>
         <td><%= event.season.name %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+  <div class="calender">
+    <%= month_calendar events: @events do |date, events| %>
+      <%= date.day %>
+
+      <% events.each do |event| %>
+        <div>
+          <%= event.name %>
+          <%= event.food %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+

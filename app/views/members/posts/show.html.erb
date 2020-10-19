@@ -1,7 +1,7 @@
-
-<%= render 'members/members/profile', member: @member %>
-
-<h1>投稿詳細</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="event-area col-xs-12">
+      <h1>投稿詳細</h1>
 
   <div class="img_field">
     <%= attachment_image_tag(@post, :food_image, :size => '240x240', fallback: "no_image.jpg") %>
@@ -33,34 +33,37 @@
     </tr>
   </table>
 
-
- <div class="favorte">
-  <% if @post.favorited_by?(current_member) %></td>
-            <td><%= link_to post_favorite_path(@post.id),  method: :delete do %>いいね
-              🖤 <%= @post.favorites.count %></td>
-                <% end %>
-            <% else %>
-            <td><%= link_to post_favorites_path(@post.id),  method: :post do %>いいね
-              🤍 <%= @post.favorites.count %></td>
-                <% end %>
-            <% end %>
-                <p>※いいねしたらコメントを送ろう！</p>
-          </div>
+<% if member_signed_in? && @member.id == current_member.id %>
+<div class="favorte">
+  <% if @post.favorited_by?(current_member) %>
+  <td>
+    <%= link_to post_favorite_path(@post.id),  method: :delete do %>いいね
+      🖤 <%= @post.favorites.count %>
+    <% end %>
+  </td>
+  <% else %>
+  <td>
+    <%= link_to post_favorites_path(@post.id),  method: :post do %>いいね
+      🤍 <%= @post.favorites.count %></td>
+     <% end %>
+  <% end %>
+  <p>※いいねしたらコメントを送ろう！</p>
+</div>
 
  <div class="comment">
   <table>
   コメント　<%= @post.comments.count %>
   <thead>
     <tr>
-      <th>投稿者</th>
       <th>コメント</th>
+      <th>投稿者</th>
     </tr>
   </thead>
   <tbody>
   <% @comments.each do |comment| %>
   <tr>
-  　<td><%= comment.member.name %></td>
     <td><%= comment.comment %></td>
+    <td>by<%= comment.member.name %></td>
       <% if current_member. == comment.member %>
       <td><%= link_to "destroy", post_comment_path(@post, comment), method: :delete %>
         <% end %>
@@ -80,6 +83,10 @@
         <% end %>
         <% end %>
       </div>
+
+      <% elsif %>
+      <div></div>
+      <% end %>
 
 
 

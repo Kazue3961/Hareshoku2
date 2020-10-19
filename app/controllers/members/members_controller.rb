@@ -1,5 +1,5 @@
 class Members::MembersController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_member!, except: [:show]
 
   def show
     @member = Member.find(params[:id])

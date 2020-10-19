@@ -1,26 +1,35 @@
-<%= render 'members/members/profile', member: @member %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="profile-area col-xs-12">
+      <%= render 'members/members/profile', member: @member %>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
+    <div class="memberpage-main-area col-xs-12">
+      <div class="row">
+        <% @posts.each do |post| %>
+        <div class="post-content col-xs-6 col-md-4">
+          <table>
+            <tr>
+              <th></th><td><%= link_to post_path(post) do %><%= attachment_image_tag(@post, :food_image, fallback: "no_image.jpg") %><% end %></td>
+            </tr>
+            <tr>
+              <th></th><td><%= post.event.name %></td>
+            </tr>
+            <tr>
+              <th></th><td><%= post.food %></td>
+            </tr>
+            <tr>
+              <th></th><td><%= post.content %></td>
+            </tr>
+            <tr>
+              <th></th><td><%= link_to member_path(post.member) do %>by<%= post.member.name %></td>
+              <% end %>
+            </tr>
+          </table>
+        </div>
+        <% end %>
+      </div>
+    </div>
 
-     <tr>
-        <td><%= attachment_image_tag(@post, :foof_image, :size => "300x300", fallback: "no_image.jpg") %></td>
-        <td>　</td>
-        <td><%= post.food %></td>
-        <td><%= post.content %></td>
-      </tr>
-
-    <% end %>
-  </tbody>
-</table>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 class Members::PostsController < ApplicationController
-  # before_action :authenticate_member!
+  before_action :authenticate_member!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @events = Event.all
-    @posts = Post.all
+    @posts = Post.includes(:member)
   end
 
   def new
@@ -24,8 +24,8 @@ class Members::PostsController < ApplicationController
   end
 
   def show
-    @member = current_member
-    @post = Post.find(params[:id])
+    @member = Member.find_by(id: params[:id])
+    @post = Post.find_by(id: params[:id])
     @comment = Comment.new
     @comments = @post.comments
   end
@@ -50,9 +50,19 @@ class Members::PostsController < ApplicationController
     redirect_to member_path(@member.id)
   end
 
+  def search
+    @post_or_member = params[:category]
+    if @post_or_member == "1"
+      @posts = Post.search(params[:search], @post_or_member)
+    else
+      @members = Member.search(params[:search], @post_or_member)
+    end
+  end
+
+
   private
   def post_params
-    params.require(:post).permit(:member_id, :event_id, :date, :food, :content, :food_image)
+    params.require(:post).permit(:event_id, :date, :food, :content, :food_image)
   end
 
 end

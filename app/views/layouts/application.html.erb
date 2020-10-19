@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hareshoku</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,56 +12,80 @@
   </head>
 
   <body>
-    <header id="global-head">
-      <h1 id="logo">Logo</h1>
-    </header>
+    <nav class="navbar-inverse navbar-fixed-left">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-logo">
+            <% if admin_signed_in? %>
+              <%= link_to image_tag("logo-yoko.png", class: "logo"), admins_top_path %>
+            <% elsif %>
+              <%= link_to image_tag("logo-yoko.png", class: "logo"), root_path %>
+            <% end %>
+          </div>
+        </div>
 
-    <div id="nav-toggle">
-      <div>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-
-    <aside id="sidebar">
-      <nav id="global-nav">
-        <ul>
-          <li class="sub-menu">
-
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
             <% if member_signed_in? %>
-            <li><%= link_to "top", root_path %></li>
-            <li><%= link_to "about", about_path %></li>
-            <li><%= link_to "mypage", member_path(id: current_member.id) %></li>
-            <li><%= link_to "log_out", destroy_member_session_path, method: :delete %>
-            </li>
-            <li>検索</li>
+              <li><%= link_to "top", root_path %></li>
+              <li><%= link_to "posts", posts_path %></li>
+              <li class="dropdowm">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">季節のページ <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "春", events_path(season_id: 1) %></li>
+                  <li><%= link_to "夏", events_path(season_id: 2) %></li>
+                  <li><%= link_to "秋", events_path(season_id: 3) %></li>
+                  <li><%= link_to "冬", events_path(season_id: 4) %></li>
+                </ul>
+              </li>
+              <li><%= link_to "mypage", member_path(id: current_member.id) %></li>
+              <li><%= link_to "log_out", destroy_member_session_path, method: :delete %>
+              </li>
+              <li>検索</li>
 
-          <% elsif admin_signed_in? %>
-            <li><%= link_to "top", admins_top_path %></li>
-            <li><%= link_to "行事一覧", admins_events_path %></li>
-            <li><%= link_to "季節一覧", admins_seasons_path %></li>
-            <li><%= link_to "会員一覧", admins_members_path %></li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-            <li>検索</li>
+            <% elsif admin_signed_in? %>
+              <li><%= link_to "top", admins_top_path %></li>
+              <li><%= link_to "行事一覧", admins_events_path %></li>
+              <li><%= link_to "季節一覧", admins_seasons_path %></li>
+              <li><%= link_to "会員一覧", admins_members_path %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
 
-          <% else %>
-            <li><%= link_to "top", root_path %></li>
-            <li><%= link_to "about", about_path %></li>
-            <li><%= link_to "新規登録", new_member_registration_path %></li>
-            <li><%= link_to "ログイン", new_member_session_path %></li>
-            <li>検索</li>
+            <% else %>
+              <li><%= link_to "top", root_path %></li>
+              <li><%= link_to "about", about_path %></li>
+              <li><%= link_to "新規登録", new_member_registration_path %></li>
+              <li><%= link_to "ログイン", new_member_session_path %></li>
+            <% end %>
+          </ul>
+
+          <!-- 検索 -->
+          <% if admin_signed_in? %>
+            <div class="search">
+            </div>
+          <% elsif %>
+            <div class="search">
+              <%= form_tag(search_path, :method => 'get') do %>
+                <%= select_tag(:category, options_for_select([["ハレ食", "1"],["メンバー","2"]]))%><br>
+                <%= text_field_tag :search %><br>
+                <%= submit_tag 'search'%>
+              <% end %>
+            </div>
           <% end %>
-        </ul>
-      </nav>
-    </aside>
+        </div>
 
-       <main id="main">
-    <div id="main-in">
+      </div>
+    </nav>
 
     <%= yield %>
-  </div>
-</main>
 
+    <footer class="footer">
+      <p class="footer-text">©2020 Hareshoku All Rights Reserved.</p>
+    </footer>
   </body>
 </html>

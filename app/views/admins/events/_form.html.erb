@@ -4,7 +4,7 @@
 		<dd><%= f.collection_select :season_id, Season.all, :id, :name %></dd>
 
 		<dt><%= f.label "行事日" %></dt>
-		<dd><%= f.date_field :date %></dd>
+		<dd><%= f.date_field :start_time %></dd>
 
 		<dt><%= f.label "行事名" %></dt>
 		<dd><%= f.text_field :name %></dd>
