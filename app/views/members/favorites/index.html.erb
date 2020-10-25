@@ -4,13 +4,16 @@
       <%= render 'members/members/profile', member: @member %>
     </div>
 
-    <div class="memberpage-main-area col-xs-12">
-      <div class="row">
-        <% @posts.each do |post| %>
-        <div class="post-content col-xs-6 col-md-4">
-          <table>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="post-content col-xs-12 col-md-6 col-lg-4">
+          <table class="post-block">
             <tr>
-              <th></th><td><%= link_to post_path(post) do %><%= attachment_image_tag(@post, :food_image, fallback: "no_image.jpg") %><% end %></td>
+              <th></th><td><%= link_to post_path(post) do %><%= attachment_image_tag post, :food_image, fallback: "no_image.jpg", class: "food-img" %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th></th><td><%= post.event.date %></td>
             </tr>
             <tr>
               <th></th><td><%= post.event.name %></td>
@@ -19,17 +22,24 @@
               <th></th><td><%= post.food %></td>
             </tr>
             <tr>
-              <th></th><td><%= post.content %></td>
+              <th></th><td><%= post.content.truncate(18) %></td>
             </tr>
             <tr>
-              <th></th><td><%= link_to member_path(post.member) do %>by<%= post.member.name %></td>
-              <% end %>
+              <th></th>
+                <td><i class="fas fa-heart" style="color: #ee827c;"></i><%= post.favorites.count %>
+                    <i class="fas fa-comment"></i><%= post.comments.count %></td>
+            </tr>
+            <tr>
+              <th></th>
+                <td><%= attachment_image_tag post.member, :profile_image, fallback: "no_image.jpg", class: "member-icon" %>
+                   <%= link_to member_path(post.member) do %><%= post.member.name %></td>
+                <% end %>
             </tr>
           </table>
         </div>
         <% end %>
       </div>
-    </div>
+
 
   </div>
 </div>

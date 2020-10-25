@@ -1,43 +1,48 @@
-<h1>行事一覧</h1>
-
-<%= link_to new_admins_event_path do %>
-<label class="btn btn-primary btn-md">新規登録する</label>
-<% end %>
-
-  <table>
-    <thead>
-      <tr>
-        <th>行事ID</th>
-        <th>行事日</th>
-        <th>行事名</th>
-        <th>行事食</th>
-        <th>行事季節</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.id %></td>
-        <td><%= event.start_time %></td>
-        <td><%= link_to event.name, admins_event_path(event.id), class: "underline" %></td>
-        <td><%= event.food %></td>
-        <td><%= event.season.name %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-  <div class="calender">
-    <%= month_calendar events: @events do |date, events| %>
-      <%= date.day %>
-
-      <% events.each do |event| %>
-        <div>
-          <%= event.name %>
-          <%= event.food %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>行事一覧</h1>
+      <div class="row">
+        <div class="col-xs-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>行事ID</th>
+                <th>行事日</th>
+                <th>行事名</th>
+                <th>行事食</th>
+                <th>行事季節</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @events.each do |event| %>
+              <tr>
+                <td><%= event.id %></td>
+                <td><%= l event.start_time, format: :short %></td>
+                <td><%= link_to event.name, admins_event_path(event.id), class: "underline" %></td>
+                <td><%= event.food %></td>
+                <td><%= event.season.name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
+      </div>
+      <%= link_to new_admins_event_path do %>
+        <label class="btn btn-md">新規登録する</label>
       <% end %>
-    <% end %>
-  </div>
+
+      <div class="calendar col-xs-12">
+        <%= month_calendar events: @events do |date, events| %>
+        <%= date.day %>
+
+        <% events.each do |event| %>
+          <div>
+            <%= link_to event.name, admins_event_path(event.id) %>
+            <%= event.food %>
+          </div>
+        <% end %>
+        <% end %>
+      </div>
 
 

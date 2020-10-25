@@ -1,0 +1,19 @@
+<% if member_signed_in? %>
+<% unless current_member == @member %>
+  <% if current_member.following?(@member) %>
+    <%= form_for(current_member.relationships.find_by(follow_id: @member.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :follow_id, @member.id %>
+      <%= f.submit 'フォローをやめる', class: 'btn btn-default btn-block' %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_member.relationships.build) do |f| %>
+      <%= hidden_field_tag :follow_id, @member.id %>
+      <%= f.submit 'フォローする', class: 'btn btn-default btn-block' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<td>フォロー中：<%= member.followings.count %></td>
+<td>フォロー：<%= member.followers.count %></td>
+
+<% end %>

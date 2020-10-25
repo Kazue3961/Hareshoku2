@@ -2,8 +2,7 @@ class Members::PostsController < ApplicationController
   before_action :authenticate_member!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @events = Event.all
-    @posts = Post.includes(:member)
+    @posts = Post.page(params[:page]).reverse_order
   end
 
   def new

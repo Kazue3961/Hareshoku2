@@ -1,38 +1,45 @@
-<h1>行事詳細</h1>
-  <table>
-    <tr>
-      <th>行事季節</th>
-      <td><%= @event.season.name %></td>
-    </tr>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>行事詳細</h1>
+      <div class="event-field col-xs-12 col-md-7">
+        <table>
+          <tr>
+            <th>行事季節</th>
+            <td><%= @event.season.name %></td>
+          </tr>
+          <tr>
+            <th>行事日</th>
+            <td><%= @event.start_time %></td>
+          </tr>
+          <tr>
+            <th>行事名</th>
+            <td><%= @event.name %></td>
+          </tr>
+          <tr>
+            <th>行事食</th>
+            <td><%= @event.food %></td>
+          </tr>
+          <tr>
+            <th>行事説明</th>
+            <td><%= @event.introduction %></td>
+          </tr>
+        </table>
+      </div>
 
-    <tr>
-      <th>行事日</th>
-      <td><%= @event.start_time %></td>
-    </tr>
+      <div class="event-field col-xs-12 col-md-5">
+        <%= attachment_image_tag @event, :event_image, fallback: "no_image.jpg" %>
+      </div>
 
-    <tr>
-      <th>行事名</th>
-      <td><%= @event.name %></td>
-    </tr>
+      <div class="col-xs-12">
+        <%= link_to edit_admins_event_path do %>
+          <button type="button" class="btn btn-md">編集する</button>
+        <% end %>
+        <%= link_to admins_events_path do %>
+          <button type="button" class="btn btn-md">一覧ページへ戻る</button>
+        <% end %>
+      </div>
 
-    <tr>
-      <th>行事食</th>
-      <td><%= @event.food %></td>
-    </tr>
-
-    <tr>
-      <th>行事説明</th>
-      <td><%= @event.introduction %></td>
-    </tr>
-
-    <div class="img_field">
-      <%= attachment_image_tag(@event, :event_image, :size => '300x240', fallback: "no_image.jpg") %>
     </div>
-  </table>
-
-    <%= link_to edit_admins_event_path do %>
-      <button type="button" class="btn btn-primary">編集する</button>
-    <% end %>
-    <%= link_to admins_events_path do %>
-      <button type="button" class="btn btn-primary">一覧ページへ戻る</button>
-    <% end %>
+  </div>
+</div>

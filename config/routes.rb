@@ -15,10 +15,11 @@ Rails.application.routes.draw do
     get 'search' => 'posts#search'
     resources :members, only: [:show, :edit, :update]
     resources :posts do
-    resources :favorites, only: [:index, :create, :destroy]
-    resources :comments, only: [:index, :create, :destroy]
+      resources :favorites, only: [:index, :create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
     resources :events, only: [:index]
+    resources :relationships, only: [:create, :destroy]
   end
 
   devise_for :admins, controllers: {

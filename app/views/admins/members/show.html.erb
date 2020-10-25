@@ -1,33 +1,40 @@
-<h1><%= @member.name %> さんの詳細</h1>
-
-<table class="table">
-  　<tr>
-    　<th>名前</th>
-    　<td><%= @member.name %></td>
-  　</tr>
-  　<tr>
-    　<th>プロフィール</th>
-    　<td><%= @member.profile %></td>
-  　</tr>
-  　<tr>
-    　<th>メールアドレス</th>
-    　<td><%= @member.email %></td>
-  　</tr>
-  　<tr>
-    　<th>プロフィール画像</th>
-    　<td><%= attachment_image_tag(@member, :profile_image, :size => "100x100", fallback: "no_image.jpg") %></td>
-    <tr>
-      <th>会員ステータス</th>
-      <td><% if @member.is_active? %>
-          <span class="text_active">有効</span>
-          <% else %>
-          <span class="text_invalid">退会済み</span>
-          <% end %>
-      </td>
-    </tr>
-　</table>
-    <%= link_to edit_admins_member_path do %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1><%= @member.name %> さんの詳細</h1>
+      <table class="table">
+        <tr>
+          <th>名前</th>
+          <td><%= @member.name %></td>
+        </tr>
+        <tr>
+          <th>プロフィール</th>
+          <td><%= @member.profile %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @member.email %></td>
+        </tr>
+        <tr>
+          <th>プロフィール画像</th>
+          <td><%= attachment_image_tag @member, :profile_image, :size => "100x100", fallback: "no_image.jpg" %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td><% if @member.is_active? %>
+            <span class="text_active">有効</span>
+            <% else %>
+            <span class="text_invalid">退会済み</span>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <%= link_to edit_admins_member_path do %>
       <button type="button" class="btn btn-primary">会員情報を編集する</button>
-    <% end %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
 
 

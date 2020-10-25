@@ -1,5 +1,5 @@
 class Members::FavoritesController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_member!, only: [:create, :destroy]
 
   def index
     @member = current_member
@@ -8,21 +8,16 @@ class Members::FavoritesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    favorite = current_member.favorites.new(post_id: @post.id)
+    favorite = current_member.favorites.build(post_id: params[:post_id])
     favorite.save
     redirect_to post_path(@post.id)
   end
 
   def destroy
     @post = Post.find(params[:post_id])
-    favorite = current_member.favorites.find_by(post_id: @post.id)
+    favorite = current_member.favorites.find_by(post_id: params[:post_id])
     favorite.destroy
     redirect_to post_path(@post.id)
-  end
-
-  private
-  def post_params
-    params.require(:post).permit(:member_id, :event_id, :date, :food, :content, :food_image)
   end
 
 end

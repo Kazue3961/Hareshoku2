@@ -1,2 +1,79 @@
-<h1>Members::Home#about</h1>
-<p>Find me in app/views/members/home/about.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="about col-xs-12">
+      <%= image_tag "about" %>
+      <div class="row">
+        <div class="about-top col-xs-12">
+          <h1>ハレ食とは？</h1>
+            <p>お正月、お花見、端午の節句、十五夜、冬至など、日本の行事やお祝いの日に欠かせない「行事食」<br>
+              きっと何かしらの行事食を食べたことがありますよね。<br>
+              お祝いや無病息災、子供の健やかな成長など意味が込められていて、起源や由来もさまざま。<br>
+              旬の食材を使っていることが多いので、季節を感じることもできます。</p>
+            <p>そんな行事食を、もっと身近に感じられたらいいなという思いを込めて、ここでは「ハレ食」と呼んでみます。<br>
+              少しオリジナルがあってもいい、くらいの肩の力の抜き具合で<br>みんなでハレ食を楽しんでみませんか。</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="about-section col-xs-12">
+            <div class="about-innner col-xs-12 col-md-7">
+              <h2>どんな行事やハレ食があるか見てみる</h2>
+              <p class="about-text">
+                お正月はお節、端午の節句は柏餅、夏越の大祓は水無月、<br>
+                十五夜は月見団子、秋のお彼岸はおはぎ、事八日はお事汁などなど...<br>
+                知らなかったハレ食があるかもしれません。
+              </p>
+              <%= link_to "＞＞季節のページ", events_path(season_id: 1) %>
+            </div>
+            <div class="about-img col-xs-12 col-md-5">
+              <%= image_tag "about1.png" %>
+            </div>
+          </div>
+
+          <div class="about-section col-xs-12">
+            <div class="about-img col-xs-12 col-md-5">
+              <%= image_tag "about2.png" %>
+            </div>
+            <div class="about-innner col-xs-12 col-md-7">
+              <h2>みんなのハレ食を見てみる</h2>
+              <p class="about-text">
+                地域によって使う食材や見た目、飾り方や食べ方が違ったり、<br>
+                その地域ならではの行事やハレ食もあります。<br>
+                みんなのいろいろなハレ食を見てみてください。
+              </p>
+              <%= link_to "＞＞みんなのハレ食", posts_path %>
+            </div>
+          </div>
+
+          <div class="about-section col-xs-12">
+            <div class="col-xs-12 col-md-7">
+              <h2>ハレ友と一緒に楽しむ</h2>
+              <p class="about-text">
+                ここではハレ食を楽しむ皆さんは「ハレ友」です。<br>
+                ハレ友のハレ食が、おいしそう！食べたい！いいね！と思ったらリアクションを。<br>
+                ステキだね♡をすると、届けたい言葉をコメントできます。<br>
+                みんなで一緒に、ハレ食を楽しみましょう。
+              </p>
+              <%= link_to "＞＞みんなのハレ食", posts_path %>
+            </div>
+            <div class="about-img col-xs-12 col-md-5">
+              <%= image_tag "about3.png" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12" style="margin-top: 7em;">
+            <p style="text-align: center;">
+              登録をしなくても、閲覧はできますが、ステキだね♡やコメントはできません。<br>
+              面白そうだな、と思ったらぜひ登録して気軽に楽しんでください。</p>
+              <p style="text-align: center;">
+              また、常に新鮮な気分で、ご自身の直感で、投稿されたハレ食を楽しんでいただきたく<br>
+              あえてハレ友同士のフォロー機能は設けていません。ご理解いただけますと幸いです。</p>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
