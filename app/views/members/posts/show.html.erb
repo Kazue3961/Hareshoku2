@@ -1,98 +1,103 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="event-area col-xs-12">
+    <div class="col-xs-12">
       <h1>投稿詳細</h1>
+        <div class="row post-index">
+          <div class="post-img col-md-12 col-lg-5">
+            <%= attachment_image_tag @post, :food_image, fallback: "no_image.jpg", class: "food-img" %>
+          </div>
+          <div class="post-content col-md-12 col-lg-7">
+            <table>
+              <tr>
+                <th>楽しむ日</th><td><%= @post.date %></td>
+              </tr>
+              <tr>
+                <th>行事名</th><td><%= @post.event.name %></td>
+              </tr>
+              <tr>
+                <th>ハレ食</th><td><%= @post.food %></td>
+              </tr>
+              <tr>
+                <th>詳しく</th><td><%= @post.content %></td>
+              </tr>
+              <tr>
+                <th>ハレ友</th>
+                <td><%= attachment_image_tag @post.member, :profile_image, fallback: "no_image.jpg", class: "member-icon"%>
+                    <strong><%= link_to member_path(@post.member) do %><%= @post.member.name %></strong></td>
+                <% end %>
+              </tr>
+            </table>
 
-  <div class="img_field">
-    <%= attachment_image_tag(@post, :food_image, :size => '240x240', fallback: "no_image.jpg") %>
+            <% if member_signed_in? %>
+              <div class="favorite">
+                <% if @post.favorited_by?(current_member) %>
+                  <td>
+                    <%= link_to post_favorite_path(@post.id),  method: :delete do %>
+                      <i class="fas fa-heart fa-lg" style="color: #ee827c;"></i>
+                      <%= @post.favorites.count %>
+                    <% end %>
+                  </td>
+                <% else %>
+                  <td>
+                    <%= link_to post_favorites_path(@post.id),  method: :post do %>
+                      <i class="far fa-heart fa-lg"></i>
+                      <%= @post.favorites.count %>
+                    <% end %>
+                  </td>
+                <% end %>
+              </div>
+
+              <div class="comment">
+                <strong>コメント</strong>　<%= @post.comments.count %>
+                  <% @comments.each do |comment| %>
+                    <table>
+                      <tr>
+                        <th></th>
+                          <td><%= attachment_image_tag comment.member, :profile_image, fallback: "no_image.jpg", class: "member-icon" %></td>
+                        <th></th>
+                          <td><strong><%= link_to member_path(comment.member) do %><%= comment.member.name %></strong></td>
+                        <th></th>
+                          <td><%= comment.comment %></td>
+                        <% if current_member. == comment.member %>
+                        <th></th>
+                          <td><%= link_to "　＞削除する", post_comment_path(@post, comment), method: :delete %></td>
+                          <% end %>
+                          <% end %>
+                      </tr>
+                      <% end %>
+                   </table>
+              </div>
+
+              <div class="comment_form">
+              <% if @post.favorited_by?(current_member) %>
+              <p>※いいねしたらコメントを送ろう！</p>
+                <%= form_for [@post, @comment] do |f| %>
+                <%= f.text_area :comment, size: "50%" %>
+                <%= f.submit 'コメントする', class: "btn" %>
+                <% end %>
+              <% end %>
+            </div>
+            <% elsif %>
+              <div></div>
+            <% end %>
+          </div>
+        </div>
+
+          <div class="col-xs-12">
+            <% if member_signed_in? %>
+              <%= link_to edit_post_path do %>
+                <button type="button" class="btn btn-primary">編集する</button>
+              <% end %>
+               <%= link_to posts_path do %>
+                <button>戻る</button>
+                <% end %>
+            <% else %>
+              <%= link_to posts_path do %>
+                <button>戻る</button>
+              <% end %>
+            <% end %>
+          </div>
+
+    </div>
   </div>
-  <table>
-    <tr>
-      <th>楽しむ日</th>
-      <td><%= @post.date %></td>
-    </tr>
-
-    <tr>
-      <th>行事名</th>
-      <td><%= @post.event.name %></td>
-    </tr>
-
-    <tr>
-      <th>ハレ食(行事食)</th>
-      <td><%= @post.food %></td>
-    </tr>
-
-    <tr>
-      <th>詳しく</th>
-      <td><%= @post.content %></td>
-    </tr>
-
-    <tr>
-      <th>投稿者</th>
-      <td>by<%= @post.member.name %></td>
-    </tr>
-  </table>
-
-<% if member_signed_in? && @member.id == current_member.id %>
-<div class="favorte">
-  <% if @post.favorited_by?(current_member) %>
-  <td>
-    <%= link_to post_favorite_path(@post.id),  method: :delete do %>いいね
-      🖤 <%= @post.favorites.count %>
-    <% end %>
-  </td>
-  <% else %>
-  <td>
-    <%= link_to post_favorites_path(@post.id),  method: :post do %>いいね
-      🤍 <%= @post.favorites.count %></td>
-     <% end %>
-  <% end %>
-  <p>※いいねしたらコメントを送ろう！</p>
 </div>
-
- <div class="comment">
-  <table>
-  コメント　<%= @post.comments.count %>
-  <thead>
-    <tr>
-      <th>コメント</th>
-      <th>投稿者</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @comments.each do |comment| %>
-  <tr>
-    <td><%= comment.comment %></td>
-    <td>by<%= comment.member.name %></td>
-      <% if current_member. == comment.member %>
-      <td><%= link_to "destroy", post_comment_path(@post, comment), method: :delete %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</tbody>
-</table>
-</div>
-
-
-  <div class="comment_form">
-    <% if @post.favorited_by?(current_member) %>
-        <%= form_for [@post, @comment] do |f| %>
-        <%= f.text_area :comment, size: "90x5" %>
-        <%= f.submit 'コメント投稿する', class: "btn btn-primary" %>
-        <% end %>
-        <% end %>
-      </div>
-
-      <% elsif %>
-      <div></div>
-      <% end %>
-
-
-
-    <%= link_to edit_post_path do %>
-      <button type="button" class="btn btn-primary">編集する</button>
-    <% end %>
-    <%= link_to posts_path do %>
-      <button type="button" class="btn btn-primary">一覧ページへ</button>
-    <% end %>

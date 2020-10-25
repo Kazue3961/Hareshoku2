@@ -4,9 +4,11 @@
       <%= render 'members/members/profile', member: @member %>
     </div>
 
-    <div class="mypage-form-area col-xs-12">
-      <h1>新規投稿</h1>
+    <div class="row">
+      <div class="mypage-form-area col-xs-12">
+        <h1>新規投稿</h1>
         <%= render 'form', post: @post, url: posts_path, submit: '投稿する' %>
+      </div>
     </div>
 
   </div>

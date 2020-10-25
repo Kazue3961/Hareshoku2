@@ -2,7 +2,7 @@ class Admins::EventsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @events = Event.all.order(season_id: :DESC)
+    @events = Event.all.order(season_id: "ASC")
   end
 
   def new
@@ -30,6 +30,7 @@ class Admins::EventsController < ApplicationController
     @event = Event.find(params[:id])
     if @event.update(event_params)
       redirect_to admins_event_path(@event.id)
+      flash[:info] = "行事を更新しました"
     else
       render :edit
     end
@@ -39,7 +40,7 @@ class Admins::EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
     redirect_to admins_events_path
-    flash[:info] = "イベントを削除しました"
+    flash[:info] = "行事を削除しました"
   end
 
   private

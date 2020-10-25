@@ -1,16 +1,20 @@
 <h1><%= @member.name %>page</h1>
-  <div class="profile-header">
-    <%= attachment_image_tag member, :profile_image, format: 'jpeg', fallback: "no_image.jpg" %>
-    <%= member.profile %>
+  <div class="row">
+    <div class="profile-icon col-xs-10 col-md-3">
+      <%= attachment_image_tag member, :profile_image, fallback: "no_image.jpg" %>
+    </div>
+    <div class="profile-text col-xs-12 col-md-8">
+      <%= member.profile %>
+    </div>
   </div>
-
-  <div class="profile-menu">
+  <div class="row">
+  <div class="profile-menu col-xs-12">
 　  <table>
       <% if member_signed_in? && @member.id == current_member.id %>
       <tr>
-        <th><%= link_to "投稿したハレ食", member_path(current_member), class: "btn btn-default" %></th>
-        <th><%= link_to "いいね・コメントしたハレ食", post_favorites_path(current_member), class: "btn btn-default" %></th>
-        <th><%= link_to "プロフィール編集", edit_member_path(current_member), class: "btn btn-default" %></th>
+        <th><%= image_tag "logo-icon" %><%= link_to "投稿したハレ食　", member_path(current_member) %></th>
+        <th><%= image_tag "logo-icon" %><%= link_to "いいね・コメントしたハレ食　", post_favorites_path(current_member) %></th>
+        <th><%= image_tag "logo-icon" %><%= link_to "プロフィール編集", edit_member_path(current_member) %></th>
       </tr>
       <% elsif %>
       <tr>
@@ -19,3 +23,4 @@
       <% end %>
     </table>
   </div>
+</div>

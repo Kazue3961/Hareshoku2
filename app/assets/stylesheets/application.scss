@@ -17,106 +17,33 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
 
-@media (min-width: 768px) {
-  .container {
-    width: 503px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 723px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 923px;
-  }
-}
-@media (min-width: 1432px) {
-  .container {
-    width: 1170px;
-  }
-}
+ @import "slick-theme";
+ @import "slick";
 
-.container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-
-//table関係//
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300&display=swap');
 
 
 //共通//
-dl dd {
-  padding-bottom: 25px;
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 80px;
+    padding-right: 90px;
 }
-
-h1, h2 {
-  margin-top: 50px;
-  padding-bottom: 30px;
+@media screen and (max-width: 768px) {
+  .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
-
-//sign_in up//
-.field {
-  margin-bottom: 20px;
-}
-.actions {
-  margin-bottom: 10px;
-}
-
-//top//
-img {
-  height: 10em;
-}
-
-.calendar {
-  margin-top: 10em;
-}
-
-
-
-//event-index//
-.post-content {
-  text-align: center;
-}
-
-
-
-.container-small, .container-large {
-  max-width: 100%;
-}
-
-.event-area {
-  padding-left: 5em;
-}
-
-
-//member//
-.profile-menu {
-  margin-bottom: 5em;
-}
-
-.mypage-main-area {
-  margin-bottom: 5em;
-}
-
-.food_image {
-  width: 150px;
-  object-fit: cover; //画像が潰れないように//
-}
-
-
-
-
 
 body {
   padding-top: 70px;
-  // min-height: 200vh;
+  color: #765c47;
+  font-family:'Avenir','Arial','Noto Sans JP', sans-serif;
 }
 @media (min-width: 768px) {
   body {
@@ -129,23 +56,332 @@ body {
   }
 }
 
-
 a {
   text-align: center;
   color: #765c47;
 }
 
-// sidebar //
+h1, h2 {
+  margin-top: 50px;
+  padding-bottom: 30px;
+}
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 24px;
+}
 
+img {
+  max-width: 100%;
+}
+
+.btn{
+  background-color: #c97586;
+  border-color: #c97586;
+  color: #fff;
+  margin: 10px 0;
+}
+
+textarea {
+  width: 450px;
+  height: 150px;
+}
+@media screen and (max-width: 768px) {
+  textarea {
+    width: 350px;
+    height: 100px;
+  }
+}
+
+.search {
+  margin: 40px 30px;
+  font-size: 11px;
+}
+
+//kaminari//
+.pagination>li>a {
+  border: none;
+  color: #765c47;
+}
+
+.pagination>.active>a {
+  background: #f2a0a1;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+
+//画像関係//
+.member-icon{
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.season-link-s img{
+  width: 95px;
+  height: auto;
+}
+.food-img, .event-img {
+  width: 270px;
+  height: 270px;
+  object-fit: cover; //画像が潰れないように//
+}
+@media screen and (max-width: 768px) {
+  .food-img, .event-img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+}
+.profile-menu img {
+  width: 17px;
+}
+
+
+//sign_in up//
+.field {
+  margin-bottom: 20px;
+}
+.actions {
+  margin: 20px 0;
+}
+
+ //top//
+.category, .calendar {
+  margin-top: 5em;
+}
+
+//top slider//
+.slider{
+  padding: 0;
+}
+.slider img{
+  max-width: 100%;
+}
+.slider-area {
+  background: #fff;
+  overflow: hidden;
+}
+.slider-items {
+  max-width: 100%;
+  margin: 100px auto;
+  padding: 35px 0;
+}
+.slider-items .slick-arrow {
+  opacity: 0;
+  transition-duration: 0.3s;
+}
+.slider-items:hover .slick-arrow {
+  opacity: 1;
+}
+.slider {
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 0;
+}
+.slider .slick-list {
+  overflow: visible; //横幅いっぱいに//
+}
+.slider .slick-track {}
+.slider .slick-slide {
+  padding: 0 5px;
+  opacity: .5;  //不透明度//
+  transition-duration: 0.3s;
+}
+.slider .slick-slide.slick-current {
+  opacity: 1;
+}
+.slider img {
+  height: auto;
+  width: 100%;
+}
+//top sliderここまで//
+
+
+
+//about//
+.about img {
+  margin-top: 30px;
+}
+.about-top {
+  text-align: center;
+  line-height: 2;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.about-section{
+  padding-left: 35px;
+  padding-right: 20px;
+  margin-top: 80px;
+  .about-text {
+    line-height: 2;
+  }
+  .about-section img {
+    padding: 0;
+  }
+}
+
+ @media screen and (max-width: 768px) {
+  .about-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .about-innner {
+    order: 1;
+  }
+  .about-img {
+    order: 2;
+  }
+  .about p br {
+    display: none;
+  }
+  .about-section{
+    padding-left: 0;
+    padding-right: 10px;
+    margin-top: 20px;
+  }
+}
+
+//post-index//
+.post-block {
+  margin: 0.5em;
+  background: white;
+  border-top: solid 3px #69821b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  display: flex;
+  tbody{
+    padding: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    td {
+      padding: 4px 0;
+    }
+  }
+}
+
+//post-show//
+.post-index {
+  padding: 3em;
+  margin: 0.5em;
+  background: white;
+  border-top: solid 3px #69821b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  tbody th {
+    width: 20%;
+  }
+  tbody td {
+    padding: 5px 0;
+    line-height: 2;
+  }
+  .img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover; //画像が潰れないように//
+    }
+  .favorite {
+    padding: 10px 0;
+  }
+  .comment td{
+    padding: 10px 10px 20px 0;
+  }
+  .comment th {
+    width: 0;
+  }
+}
+@media screen and (max-width: 1439px) {
+  .post-image{
+    display: flex;
+  }
+  .post-index tbody th {
+    width: 25%;
+  }
+}
+
+//members//
+.profile-icon img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profile-text {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.7;
+}
+.profile-menu {
+  margin: 30px 0;
+  table th {
+    padding-right: 15px;
+  }
+}
+
+//event//
+.event {
+  margin-bottom: 10px;
+}
+.event-content {
+  margin-bottom: 30px;
+  tbody td {
+    padding: 5px 0;
+    line-height: 1.5;
+  }
+}
+.season-link-s{
+  margin-top: 30px;
+  padding: 30px;
+}
+.season-link-s ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.season-link-s ul li a {
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  white-space: nowrap;
+  background-color: #f6bfbc;
+  text-decoration: none;
+  float: left;
+}
+
+//admin//
+.event-field img {
+  width: 320px;
+  height: 240px;
+  object-fit: cover;
+}
+.admin table {
+  margin: 40px 0;
+}
+.admin table tr {
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+.admin th,td {
+  width: auto;
+  padding: 15px 0;
+}
+
+.simple-calendar .table {
+  margin-top: 0;
+}
+
+// sidebar //
 .navbar-fixed-left {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1030;
-}
-.navbar-inverse {
-  background-color: #fff;
-  border-color: #fff;
 }
 
 @media (min-width: 768px) {
@@ -181,18 +417,11 @@ a {
   .navbar-fixed-left .navbar-collapse .navbar-nav.navbar-right {
     margin-right: 0;
   }
-  .logo {
+  .navbar-logo img {
     padding-top: 25px;
-    width: 210px;
-    height: auto;
+    width: 250px;
   }
-  .navbar-toggle {
-    border-color: #69821b;
-  }
-}
 
-
-@media (min-width: 768px) {
   .navbar-fixed-left {
     right: auto !important;
     left: 0 !important;
@@ -211,14 +440,32 @@ a {
   }
 }
 
-.search {
-  margin: 40px 30px;
+@media (max-width: 768px) {
+  .navbar {
+    background-color: #fff;
+  }
+  .navbar-logo img {
+    padding: 10px 0 0 10px;
+    width: 210px;
+  }
+  .navbar-toggle {
+    position: relative;
+    float: right;
+    margin-right: 15px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    background-image: none;
+    border-radius: 4px;
+  }
+  .navbar span {
+    border: 1px solid #69821b;
+  }
+  .navbar-collapse {
+    background-color: #fff;
+  }
 }
-
 
 footer {
   margin: 100px 0 50px 0;
   text-align: center;
 }
-
-

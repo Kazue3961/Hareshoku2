@@ -1,76 +1,44 @@
 <div class="container-fluid">
   <div class="row">
     <div class="event-area col-xs-12">
-      <h1><%= @season.name %>の行事とハレ食</h1>
-        <div class="event-index col-xs-12">
-          <div class="row">
-            <% @events.each do |event| %>
-            <div class="col-xs-12 col-md-8">
-              <table>
-                <tr>
-                  <th></th><td><%= event.season.name %></td> <!-- あとで消す -->
-                </tr>
-                <tr>
-                  <th></th><td><%= event.date %></td>
-                </tr>
-                <tr>
-                  <th></th><td><%= event.name %></td>
-                </tr>
-                <tr>
-                  <th></th><td><%= event.food %></td>
-                </tr>
-                <tr>
-                  <th></th><td><%= event.introduction %></td>
-                </tr>
-              </table>
-            </div>
-            <div class="event-img col-xs-12 col-md-4">
-              <%= attachment_image_tag(@event, :event_image, :size => '300x240', fallback: "no_image.jpg") %>
-            </div>
-            <% end %>
-          </div>
+      <div class="row">
+        <h1><%= @season.name %>の行事とハレ食</h1>
+          <% @events.each do |event| %>
+          <div class="event col-xs-12 col-md-8">
+            <table class="event-content">
+              <tr>
+                <th></th><td><%= l event.start_time, format: :short %></td>
+              </tr>
+              <tr>
+                <th></th><td><%= event.name %></td>
+              </tr>
+              <tr>
+                <th></th><td><%= event.food %></td>
+              </tr>
+              <tr>
+                <th></th><td><%= event.introduction %></td>
+              </tr>
+            </table>
         </div>
+        <div class="event col-xs-12 col-md-4">
+          <%= attachment_image_tag event, :event_image, fallback: "no_image.jpg", class: "event-img" %>
+        </div>
+          <% end %>
+      </div>
     </div>
 
-    <div class="post-area col-xs-12">
-      <h2>みんなのハレ食</h2>
-        <div class="post-index col-xs-12">
-          <div class="row">
-            <% @posts.each do |post| %>
-            <div class="post-content col-xs-6 col-md-4">
-              <table>
-                <tr>
-                  <th></th><td><%= attachment_image_tag @post, :food_image, :size => "200x200", fallback: "no_image.jpg" %></td>
-                </tr>
-                <tr>
-                  <th></th><td><%= post.date %></td>
-                </tr>
-                <tr>
-                  <th></th><td><%= post.event.name %></td>
-                </tr>
-                <tr>
-                  <th></th><td><%= post.food %></td>
-                </tr>
-                <tr>
-                  <th></th><td><%= post.content %></td>
-                </tr>
-                  <th></th><td><%= link_to member_path(post.member) do %>by<%= post.member.name %></td>
-                  <% end %>
-                </tr>
-              </table>
-            </div>
-            <% end %>
-          </div>
-        </div>
-    </div>
+    <%= render 'members/posts/index', post: @post %>
 
-    <div class="col-xs-12">
-      <h3>季節ページ</h3>
-        <%= link_to "春", events_path(season_id: 1) %>
-        <%= link_to "夏", events_path(season_id: 2) %>
-        <%= link_to "秋", events_path(season_id: 3) %>
-        <%= link_to "冬", events_path(season_id: 4) %>
+    <div class="row">
+      <div class="season-link-s col-xs-12">
+        <ul>
+          <li><%= link_to "春", events_path(season_id: 1) %></li>
+          <li><%= link_to "夏", events_path(season_id: 2) %></li>
+          <li><%= link_to "秋", events_path(season_id: 3) %></li>
+          <li><%= link_to "冬", events_path(season_id: 4) %></li>
+        </ul>
     </div>
+  </div>
 
   </div>
 </div>

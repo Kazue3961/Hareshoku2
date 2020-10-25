@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Admin.create(
+  email: 'hare@com',
+  password: 'hareshoku'
+  )
+
+Season.create([
+  {name: '春'},
+  {name: '夏'},
+  {name: '秋'},
+  {name: '冬'}
+  ])
+

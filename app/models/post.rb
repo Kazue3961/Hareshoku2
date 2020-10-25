@@ -8,8 +8,8 @@ class Post < ApplicationRecord
   attachment :food_image, destroy: false
 
 	validates :date, presence: true
-	validates :food, presence: true
-	validates :content, presence: true
+	validates :food, {presence: true, length: {maximum: 15}}
+	validates :content, {presence: true, length: {maximum: 200}}
 
   def favorited_by?(member)
     favorites.where(member_id: member.id).exists?

@@ -1,17 +1,25 @@
-<h2>検索結果です</h2>
-　<% if @post_or_member == "1" %>
-    <%= render 'members/posts/index', post: @post %>
-  <% elsif @post_or_member == "2" %>
-    <table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>検索結果です</h1>
+      <% if @post_or_member == "1" %>
+      　　<%= render 'members/posts/index', post: @post %>
+      <% elsif @post_or_member == "2" %>
+      <h2>該当するハレ友はこちら</h2>
+      <table>
       <% @members.each do |member| %>
-      <thead>
-        <tr>
-          <th></th>
-          <th><%= link_to member_path(member) do %><%= member.name %></th>
-          <% end %>
-        </tr>
-      </thead>
+      　　<thead>
+        　　<tr>
+          　　<th></th>
+          　　<td><%= attachment_image_tag member, :profile_image, fallback: "no_image.jpg", class: "member-icon"%>
+            　　　<%= link_to member_path(member) do %><%= member.name %></td>
+          　　<% end %>
+        　　</tr>
+      　　</thead>
       <% end %>
-    </table>
-<% else %>
-<% end %>
+      </table>
+      <% else %>
+      <% end %>
+    </div>
+  </div>
+</div>
