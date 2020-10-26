@@ -4,14 +4,14 @@
       <div class="col-xs-12 col-md-6 col-lg-4">
         <table class="post-block">
           <tr>
-            <th></th><td><%= link_to post_path(post) do %><%= attachment_image_tag post, :food_image, fallback: "no_image.jpg", class: "food-img" %></td>
+            <th></th><td><%= link_to post_path(post) do %><%= attachment_image_tag post, :food_image, fallback: "no_image", class: "food-img" %></td>
             <% end %>
           </tr>
           <tr>
             <th></th><td><%= post.date %></td>
           </tr>
           <tr>
-            <th></th><td><%= post.event.name %></td>
+            <th></th><td><strong><%= link_to post.event.name, events_path(season_id: post.event.season_id) %></strong></td>
           </tr>
           <tr>
             <th></th><td><%= post.food %></td>
@@ -20,17 +20,24 @@
             <th></th><td><%= post.content.truncate(18) %></td>
           </tr>
           <% if member_signed_in? %>
-            <tr>
-              <th></th><td><i class="fas fa-heart" style="color: #ee827c;"></i><%= post.favorites.count %></td>
-            </tr>
-          <% else %>
-            <tr>
-              <th></th>
-            </tr>
+              <tr>
+                <th></th>
+                  <td><%= link_to post_path(post) do %><i class="fas fa-heart fa-lg" style="color: #ee827c;"></i>
+                        <%= post.favorites.count %>
+                      <%= link_to post_path(post) do %><i class="fas fa-comment fa-lg"></i>
+                        <%= post.comments.count %>
+                      <% end %>
+                      <% end %>
+                  </td>
+              </tr>
+            <% else %>
+              <tr>
+                <th></th>
+              </tr>
             <% end %>
           <tr>
             <th></th>
-              <td><%= attachment_image_tag post.member, :profile_image, fallback: "no_image.jpg", class: "member-icon" %>
+              <td><%= attachment_image_tag post.member, :profile_image, fallback: "no_image", class: "member-icon" %>
                   <strong><%= link_to member_path(post.member) do %><%= post.member.name %></strong></td>
               <% end %>
           </tr>

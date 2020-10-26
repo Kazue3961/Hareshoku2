@@ -11,7 +11,7 @@
       　　<thead>
         　　<tr>
           　　<th></th>
-          　　<td><%= attachment_image_tag member, :profile_image, fallback: "no_image.jpg", class: "member-icon"%>
+          　　<td><%= attachment_image_tag member, :profile_image, fallback: "no_image", class: "member-icon"%>
             　　　<%= link_to member_path(member) do %><%= member.name %></td>
           　　<% end %>
         　　</tr>

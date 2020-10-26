@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-xs-12">
       <h1>投稿詳細</h1>
-        <div class="row post-index">
+        <div class="row post-detail">
           <div class="post-img col-md-12 col-lg-5">
-            <%= attachment_image_tag @post, :food_image, fallback: "no_image.jpg", class: "food-img" %>
+            <%= attachment_image_tag @post, :food_image, fallback: "no_image", class: "food-img" %>
           </div>
           <div class="post-content col-md-12 col-lg-7">
             <table>
@@ -22,7 +22,7 @@
               </tr>
               <tr>
                 <th>ハレ友</th>
-                <td><%= attachment_image_tag @post.member, :profile_image, fallback: "no_image.jpg", class: "member-icon"%>
+                <td><%= attachment_image_tag @post.member, :profile_image, fallback: "no_image", class: "member-icon"%>
                     <strong><%= link_to member_path(@post.member) do %><%= @post.member.name %></strong></td>
                 <% end %>
               </tr>
@@ -83,20 +83,22 @@
           </div>
         </div>
 
+        <div class="row">
           <div class="col-xs-12">
             <% if member_signed_in? %>
               <%= link_to edit_post_path do %>
-                <button type="button" class="btn btn-primary">編集する</button>
+                <button type="button" class="btn btn-md">編集する</button>
               <% end %>
-               <%= link_to posts_path do %>
-                <button>戻る</button>
+               <%= link_to member_path do %>
+                <button type="button" class="btn btn-md">戻る</button>
                 <% end %>
             <% else %>
               <%= link_to posts_path do %>
-                <button>戻る</button>
+                <button type="button" class="btn btn-md">戻る</button>
               <% end %>
             <% end %>
           </div>
+        </div>
 
     </div>
   </div>
