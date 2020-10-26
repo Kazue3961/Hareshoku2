@@ -1,5 +1,6 @@
 class Admins::SeasonsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_season, only: [:edit, :update]
 
   def index
     @season = Season.new
@@ -17,11 +18,9 @@ class Admins::SeasonsController < ApplicationController
   end
 
   def edit
-    @season = Season.find(params[:id])
   end
 
   def update
-    @season = Season.find(params[:id])
     if @season.update(season_params)
       redirect_to admins_seasons_path
     else
@@ -34,4 +33,7 @@ class Admins::SeasonsController < ApplicationController
     params.require(:season).permit(:name)
   end
 
+  def set_season
+    @season = Season.find(params[:id])
+  end
 end

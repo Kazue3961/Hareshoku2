@@ -61,11 +61,17 @@ body {
   img {
   max-width: 100%;
   }
-  .btn{
+  .btn {
   background-color: #c97586;
   border-color: #c97586;
   color: #fff;
   margin: 10px 0;
+  }
+  .btn-danger{
+  background-color: #f6ad49;
+  border-color: #f6ad49;
+  color: #fff;
+  margin: 10px;
   }
 }
 @media (min-width: 768px) {
@@ -306,6 +312,9 @@ textarea {
 }
 
 //post-form//
+.form {
+  margin-top: 20px;
+}
 .form dd {
   margin-bottom: 20px;
 }

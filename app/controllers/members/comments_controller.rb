@@ -1,11 +1,11 @@
 class Members::CommentsController < ApplicationController
   before_action :authenticate_member!
+  before_action :set_post, only: [:create, :destroy]
 
   def index
   end
 
   def create
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.member_id = current_member.id
     @comment.save
@@ -13,7 +13,6 @@ class Members::CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to request.referer
@@ -24,4 +23,7 @@ class Members::CommentsController < ApplicationController
     params.require(:comment).permit(:comment, :post_id)
   end
 
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
 end
