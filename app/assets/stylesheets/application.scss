@@ -44,6 +44,29 @@ body {
   padding-top: 70px;
   color: #765c47;
   font-family:'Avenir','Arial','Noto Sans JP', sans-serif;
+  a {
+  text-align: center;
+  color: #765c47;
+  }
+  h1, h2 {
+  margin-top: 50px;
+  padding-bottom: 30px;
+  }
+  h1 {
+  font-size: 30px;
+  }
+  h2 {
+  font-size: 24px;
+  }
+  img {
+  max-width: 100%;
+  }
+  .btn{
+  background-color: #c97586;
+  border-color: #c97586;
+  color: #fff;
+  margin: 10px 0;
+  }
 }
 @media (min-width: 768px) {
   body {
@@ -56,32 +79,6 @@ body {
   }
 }
 
-a {
-  text-align: center;
-  color: #765c47;
-}
-
-h1, h2 {
-  margin-top: 50px;
-  padding-bottom: 30px;
-}
-h1 {
-  font-size: 30px;
-}
-h2 {
-  font-size: 24px;
-}
-
-img {
-  max-width: 100%;
-}
-
-.btn{
-  background-color: #c97586;
-  border-color: #c97586;
-  color: #fff;
-  margin: 10px 0;
-}
 
 textarea {
   width: 450px;
@@ -128,13 +125,25 @@ textarea {
 .food-img, .event-img {
   width: 270px;
   height: 270px;
-  object-fit: cover; //画像が潰れないように//
+  object-fit: cover;
 }
 @media screen and (max-width: 768px) {
   .food-img, .event-img {
     width: 400px;
     height: 400px;
     object-fit: cover;
+  }
+}
+.event-img {
+  width: auto;
+  height: 240px;
+
+}
+@media screen and (max-width: 768px) {
+  .event-img {
+    width: auto;
+    height: 320px;
+
   }
 }
 .profile-menu img {
@@ -156,7 +165,9 @@ textarea {
 }
 
 //top slider//
-.slider{
+.slider {
+  max-width: 70%;
+  margin: 0 auto;
   padding: 0;
 }
 .slider img{
@@ -178,11 +189,6 @@ textarea {
 .slider-items:hover .slick-arrow {
   opacity: 1;
 }
-.slider {
-  max-width: 70%;
-  margin: 0 auto;
-  padding: 0;
-}
 .slider .slick-list {
   overflow: visible; //横幅いっぱいに//
 }
@@ -195,18 +201,17 @@ textarea {
 .slider .slick-slide.slick-current {
   opacity: 1;
 }
-.slider img {
-  height: auto;
-  width: 100%;
-}
 //top sliderここまで//
-
+@media screen and (max-width: 768px) {
+  .slider-items {
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 35px 0;
+  }
+}
 
 
 //about//
-.about img {
-  margin-top: 30px;
-}
 .about-top {
   text-align: center;
   line-height: 2;
@@ -220,7 +225,7 @@ textarea {
   .about-text {
     line-height: 2;
   }
-  .about-section img {
+  img {
     padding: 0;
   }
 }
@@ -264,9 +269,8 @@ textarea {
 }
 
 //post-show//
-.post-index {
+.post-detail {
   padding: 3em;
-  margin: 0.5em;
   background: white;
   border-top: solid 3px #69821b;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
@@ -301,6 +305,13 @@ textarea {
   }
 }
 
+//post-form//
+.form dd {
+  margin-bottom: 20px;
+}
+
+
+
 //members//
 .profile-icon img {
   width: 180px;
@@ -323,6 +334,9 @@ textarea {
 //event//
 .event {
   margin-bottom: 10px;
+}
+.event-area {
+  margin-bottom: 30px;
 }
 .event-content {
   margin-bottom: 30px;
@@ -356,12 +370,11 @@ textarea {
 
 //admin//
 .event-field img {
-  width: 320px;
-  height: 240px;
+  width: auto;
   object-fit: cover;
 }
 .admin table {
-  margin: 40px 0;
+  margin: 30px 0;
 }
 .admin table tr {
   border-bottom: solid 1px #eee;

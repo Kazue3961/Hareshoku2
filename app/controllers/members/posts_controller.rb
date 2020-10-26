@@ -44,9 +44,10 @@ class Members::PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(parmas[:id])
+    @member = current_member
+    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to member_path(@member.id)
+    redirect_to member_path(@member)
   end
 
   def search

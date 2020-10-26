@@ -9,7 +9,7 @@
         <div class="post-content col-xs-12 col-md-6 col-lg-4">
           <table class="post-block">
             <tr>
-              <th></th><td><%= link_to post_path(post) do %><%= attachment_image_tag post, :food_image, fallback: "no_image.jpg", class: "food-img" %></td>
+              <th></th><td><%= link_to post_path(post) do %><%= attachment_image_tag post, :food_image, fallback: "no_image", class: "food-img" %></td>
               <% end %>
             </tr>
             <tr>
@@ -27,8 +27,13 @@
             <% if member_signed_in? %>
               <tr>
                 <th></th>
-                  <td><%= link_to post_path(post) do %><i class="fas fa-heart" style="color: #ee827c;"></i><%= post.favorites.count %><% end %>
-                      <%= link_to post_path(post) do %><i class="fas fa-comment"></i><%= post.comments.count %></td><% end %>
+                  <td><%= link_to post_path(post) do %><i class="fas fa-heart fa-lg" style="color: #ee827c;"></i>
+                        <%= post.favorites.count %>
+                      <%= link_to post_path(post) do %><i class="fas fa-comment fa-lg"></i>
+                        <%= post.comments.count %>
+                      <% end %>
+                      <% end %>
+                  </td>
               </tr>
             <% else %>
               <tr>

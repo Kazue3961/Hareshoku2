@@ -17,7 +17,7 @@
         </tr>
         <tr>
           <th>プロフィール画像</th>
-          <td><%= attachment_image_tag @member, :profile_image, :size => "100x100", fallback: "no_image.jpg" %></td>
+          <td><%= attachment_image_tag @member, :profile_image, :size => "100x100", fallback: "no_image" %></td>
         </tr>
         <tr>
           <th>会員ステータス</th>
@@ -30,7 +30,7 @@
         </tr>
       </table>
       <%= link_to edit_admins_member_path do %>
-      <button type="button" class="btn btn-primary">会員情報を編集する</button>
+      <button type="button" class="btn btn-md">会員情報を編集する</button>
       <% end %>
 
     </div>

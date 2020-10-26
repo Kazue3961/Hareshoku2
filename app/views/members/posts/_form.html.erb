@@ -1,7 +1,7 @@
 <div class="row">
   <%= form_for(@post, url: url) do |f| %>
 
-    <div class="mypage-form col-xs-12 col-md-7">
+    <div class="form col-xs-12 col-md-7">
       <dl>
         <dt><%= f.label "楽しむ日" %></dt>
         <dd><%= f.date_field :date %></dd>
@@ -16,27 +16,10 @@
         <dd><%= f.text_area :content %></dd>
       </dl>
     </div>
-    <div class="profile-icon col-xs-12 col-md-5">
-      <%= attachment_image_tag @post, :food_image, id: "img_prev", fallback: "no_image.jpg" %>
+    <div class="col-xs-12 col-md-5">
+      <%= attachment_image_tag @post, :food_image, id: "img_prev", fallback: "no_image" %>
       <%= f.attachment_field :food_image, class: "food-img" %>
     </div>
-
-    <script>
-      $(document).on("turbolinks:load", function(){
-        function readURL(input) {
-          if(input.files && input.files[0]){
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              $('#img_prev').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-          }
-        }
-        $("#post_food_image").change(function(){
-          readURL(this);
-        });
-      });
-    </script>
 
     <div class= "col-xs-12">
       <%= f.submit submit , class: "btn btn-md" %>

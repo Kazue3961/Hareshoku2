@@ -19,7 +19,7 @@
             <td><%= member.id %></td>
             <td><%= link_to member.name, admins_member_path(member) %></td>
             <td><%= member.email %></td>
-            <td><%= attachment_image_tag member, :profile_image, fallback: "no_image.jpg", class: "member-icon" %></td>
+            <td><%= attachment_image_tag member, :profile_image, fallback: "no_image", class: "member-icon" %></td>
             <td><% if member.is_active? %>
                 <span class="text_active">有効</span>
                 <% else %>

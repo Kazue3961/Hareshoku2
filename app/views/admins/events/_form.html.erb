@@ -1,45 +1,28 @@
-<%= form_for(@event, url: url) do |f| %>
-  <div class="col-xs-12 col-md-7">
-    <dl>
-		<dt><%= f.label "行事季節" %></dt>
-		<dd><%= f.collection_select :season_id, Season.all, :id, :name %></dd>
+<div class="row">
+  <%= form_for(@event, url: url) do |f| %>
+    <div class="form col-xs-12 col-md-7">
+      <dl>
+		  <dt><%= f.label "行事季節" %></dt>
+		  <dd><%= f.collection_select :season_id, Season.all, :id, :name %></dd>
 
-		<dt><%= f.label "行事日" %></dt>
-		<dd><%= f.date_field :start_time %></dd>
+		  <dt><%= f.label "行事日" %></dt>
+		  <dd><%= f.date_field :start_time %></dd>
 
-		<dt><%= f.label "行事名" %></dt>
-		<dd><%= f.text_field :name %></dd>
+	  	<dt><%= f.label "行事名" %></dt>
+		  <dd><%= f.text_field :name %></dd>
 
-		<dt><%= f.label "行事食" %></dt>
-		<dd><%= f.text_field :food %></dd>
+  		<dt><%= f.label "行事食" %></dt>
+	  	<dd><%= f.text_field :food %></dd>
 
-		<dt><%= f.label "行事説明" %></dt>
-		<dd><%= f.text_area :introduction %></dd>
-	</dl>
+		  <dt><%= f.label "行事説明" %></dt>
+		  <dd><%= f.text_area :introduction %></dd>
+	  </dl>
   </div>
 
-		<div class="image_field col-xs-12 col-md-5">
-			<%= attachment_image_tag @event, :event_image, id: "img_prev", fallback: "no_image.jpg", size:"300x240" %>
-			<%= f.attachment_field :event_image %>
-		</div>
-
-		<script>
-      $(document).on("turbolinks:load", function(){
-        function readURL(input) {
-          if(input.files && input.files[0]){
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              $('#img_prev').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-          }
-        }
-        $("#event_event_image").change(function(){
-          readURL(this);
-        });
-      });
-    </script>
-
+	<div class="image_field col-xs-12 col-md-5">
+		<%= attachment_image_tag @event, :event_image, id: "img_prev", fallback: "no_image" %>
+    <%= f.attachment_field :event_image %>
+	</div>
 
   <div class="col-xs-12">
 		<%= f.submit submit , class: "btn btn-md" %>

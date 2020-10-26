@@ -16,3 +16,27 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+//画像prv. member#edit/post#new,edit/ admin-event#new,edit//
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#member_profile_image").change(function(){
+    readURL(this);
+  });
+  $("#post_food_image").change(function(){
+    readURL(this);
+  });
+  $("#event_event_image").change(function(){
+    readURL(this);
+  });
+});
+

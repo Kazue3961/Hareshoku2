@@ -21,13 +21,15 @@
             </table>
         </div>
         <div class="event col-xs-12 col-md-4">
-          <%= attachment_image_tag event, :event_image, fallback: "no_image.jpg", class: "event-img" %>
+          <%= attachment_image_tag event, :event_image, fallback: "no_image", class: "event-img" %>
         </div>
           <% end %>
       </div>
     </div>
 
-    <%= render 'members/posts/index', post: @post %>
+    <div class="col-xs-12">
+      <%= render 'members/posts/index', post: @post %>
+    </div>
 
     <div class="row">
       <div class="season-link-s col-xs-12">

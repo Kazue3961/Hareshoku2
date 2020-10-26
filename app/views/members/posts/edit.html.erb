@@ -7,7 +7,7 @@
     <div class="memberpage-form col-xs-12">
       <h1>投稿の編集</h1>
         <%= render 'form', post: @post, url: post_path, submit: '変更する' %>
-        <%= button_to '削除する', member_path(current_member), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn btn-md" %>
+        <%= button_to '削除する', post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn btn-md" %>
     </div>
 
   </div>
