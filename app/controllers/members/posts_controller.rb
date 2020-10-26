@@ -1,5 +1,6 @@
 class Members::PostsController < ApplicationController
-  before_action :authenticate_member!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_member!, except: [:index, :show, :search]
+  before_action :set_member_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.page(params[:page]).reverse_order
@@ -30,12 +31,9 @@ class Members::PostsController < ApplicationController
   end
 
   def edit
-    @member = current_member
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path(@post.id)
     else
@@ -44,8 +42,6 @@ class Members::PostsController < ApplicationController
   end
 
   def destroy
-    @member = current_member
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to member_path(@member)
   end
@@ -65,4 +61,8 @@ class Members::PostsController < ApplicationController
     params.require(:post).permit(:event_id, :date, :food, :content, :food_image)
   end
 
+  def set_member_post
+    @member = current_member
+    @post = Post.find(params[:id])
+  end
 end

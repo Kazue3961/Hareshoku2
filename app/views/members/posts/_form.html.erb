@@ -1,6 +1,11 @@
 <div class="row">
   <%= form_for(@post, url: url) do |f| %>
 
+    <div class="col-xs-12 col-md-5">
+      <%= attachment_image_tag @post, :food_image, id: "img_prev", fallback: "no_image", class: "food-img" %>
+      <%= f.attachment_field :food_image %>
+    </div>
+
     <div class="form col-xs-12 col-md-7">
       <dl>
         <dt><%= f.label "楽しむ日" %></dt>
@@ -16,14 +21,9 @@
         <dd><%= f.text_area :content %></dd>
       </dl>
     </div>
-    <div class="col-xs-12 col-md-5">
-      <%= attachment_image_tag @post, :food_image, id: "img_prev", fallback: "no_image" %>
-      <%= f.attachment_field :food_image, class: "food-img" %>
-    </div>
 
     <div class= "col-xs-12">
       <%= f.submit submit , class: "btn btn-md" %>
-      <% end %>
     </div>
-
+  <% end %>
 </div>

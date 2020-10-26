@@ -89,7 +89,7 @@
               <%= link_to edit_post_path do %>
                 <button type="button" class="btn btn-md">編集する</button>
               <% end %>
-               <%= link_to member_path do %>
+               <%= link_to member_path(current_member) do %>
                 <button type="button" class="btn btn-md">戻る</button>
                 <% end %>
             <% else %>
