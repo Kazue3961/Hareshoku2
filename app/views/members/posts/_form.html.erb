@@ -1,5 +1,6 @@
 <div class="row">
   <%= form_for(@post, url: url) do |f| %>
+  <%= render 'layouts/error_messages', resource: post %>
 
     <div class="col-xs-12 col-md-5">
       <%= attachment_image_tag @post, :food_image, id: "img_prev", fallback: "no_image", class: "food-img" %>
@@ -8,7 +9,7 @@
 
     <div class="form col-xs-12 col-md-7">
       <dl>
-        <dt><%= f.label "楽しむ日" %></dt>
+        <dt><%= f.label "楽しむ・楽しんだ日" %></dt>
         <dd><%= f.date_field :date %></dd>
 
         <dt><%= f.label "行事名" %></dt>

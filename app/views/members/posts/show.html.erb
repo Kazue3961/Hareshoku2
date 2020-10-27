@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <h1>投稿詳細</h1>
+      <%= flash[:notice] %>
         <div class="row post-detail">
           <div class="post-img col-md-12 col-lg-5">
             <%= attachment_image_tag @post, :food_image, fallback: "no_image", class: "food-img" %>
@@ -53,7 +54,7 @@
                     <table>
                       <tr>
                         <th></th>
-                          <td><%= attachment_image_tag comment.member, :profile_image, fallback: "no_image.jpg", class: "member-icon" %></td>
+                          <td><%= attachment_image_tag comment.member, :profile_image, fallback: "no_image", class: "member-icon" %></td>
                         <th></th>
                           <td><strong><%= link_to member_path(comment.member) do %><%= comment.member.name %></strong></td>
                         <th></th>
@@ -72,7 +73,7 @@
               <% if @post.favorited_by?(current_member) %>
               <p>※いいねしたらコメントを送ろう！</p>
                 <%= form_for [@post, @comment] do |f| %>
-                <%= f.text_area :comment, size: "50%" %>
+                <%= f.text_area :comment %>
                 <%= f.submit 'コメントする', class: "btn" %>
                 <% end %>
               <% end %>

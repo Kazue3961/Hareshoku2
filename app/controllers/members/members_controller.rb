@@ -12,7 +12,7 @@ class Members::MembersController < ApplicationController
 
   def update
     if @member.update(member_params)
-      redirect_to member_path(@member.id), notice: "プロフィールを変更しました"
+      redirect_to member_path(@member.id), notice: "プロフィールを変更しました！"
     else
       render :edit
     end

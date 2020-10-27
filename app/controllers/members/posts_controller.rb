@@ -35,7 +35,7 @@ class Members::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post.id)
+      redirect_to post_path(@post.id), notice: "投稿を変更しました！"
     else
       render :edit
     end
