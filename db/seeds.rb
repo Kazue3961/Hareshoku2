@@ -17,7 +17,7 @@ Member.create!(
       name: 'はるの',
       profile: 'お汁粉や桜餅、お団子など甘いものが好きです。',
       profile_image: open("./db/seeds_images/profile1.jpg"),
-      email: 'guest@com',
+      email: 'test@com',
       password: '000000'
     },
     {
@@ -120,7 +120,7 @@ Post.create!(
     },
     {
       member_id: 2,
-      event_id: 4,
+      event_id: 5,
       date: '2021-1-1',
       food: 'お節料理',
       content: '今度のお正月はお節を手作りします',

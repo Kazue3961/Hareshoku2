@@ -14,6 +14,8 @@ class Member < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :member
 
+  validates :name, {length: {maximum: 20}}
+  validates :profile, {length: {maximum: 100}}
 
   def follow(other_member)
     unless self == other_member

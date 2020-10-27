@@ -8,14 +8,15 @@
       <h2>プロフィール編集</h2>
         <div class="row">
           <%= form_for(@member) do |f| %>
-          <div class="profile-icon col-xs-12 col-md-3">
-            <%= attachment_image_tag @profile, :profile_image, id: "img_prev", fallback: "no_image" %>
+          <%= render 'layouts/error_messages', resource: @member %>
+          <div class="col-xs-12 col-md-3">
+            <%= attachment_image_tag @profile, :profile_image, id: "img_prev", fallback: "no_image", class: "profile-img" %>
             <%= f.attachment_field :profile_image %>
           </div>
 
-          <div class="mypage-form-field col-xs-12 col-md-8">
+          <div class="form col-xs-12 col-md-8">
             <dl>
-              <dt><%= f.label "名前" %></dt>
+              <dt><%= f.label :名前 %></dt>
               <dd><%= f.text_field :name %></dd>
               <dt><%= f.label :プロフィール %></dt>
               <dd><%= f.text_area :profile %></dd>
