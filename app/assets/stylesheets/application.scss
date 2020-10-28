@@ -48,9 +48,13 @@ body {
   text-align: center;
   color: #765c47;
   }
+  a:hover {
+    color: #69821b;
+    background-color: transparent;
+  }
   h1, h2 {
   margin-top: 50px;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
   }
   h1 {
   font-size: 30px;
@@ -67,13 +71,21 @@ body {
   color: #fff;
   margin: 10px 0;
   }
-  .btn-danger{
+  .btn-danger {
   background-color: #f6ad49;
   border-color: #f6ad49;
   color: #fff;
   margin: 10px;
   }
+  table {
+    margin: 30px 0;
+      th,td {
+        width: auto;
+        padding: 15px 0;
+    }
+  }
 }
+
 @media (min-width: 768px) {
   body {
     padding-top: 0;
@@ -84,7 +96,6 @@ body {
     margin-left: 250px;
   }
 }
-
 
 textarea {
   width: 450px;
@@ -107,24 +118,25 @@ textarea {
   border: none;
   color: #765c47;
 }
-
 .pagination>.active>a {
   background: #f2a0a1;
   border-radius: 15px;
 }
-
 .pagination>li>a:hover {
   border-radius: 15px;
 }
 
 //画像関係//
-.member-icon{
+.about-top-img {
+  margin-top: 50px;
+}
+.member-icon {
   width: 30px;
   height: 30px;
   object-fit: cover;
   border-radius: 50%;
 }
-.season-link-s img{
+.season-link-s img {
   width: 95px;
   height: auto;
 }
@@ -133,6 +145,10 @@ textarea {
   height: 270px;
   object-fit: cover;
 }
+.food-img:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 768px) {
   .food-img, .event-img {
     width: 400px;
@@ -149,7 +165,6 @@ textarea {
   .event-img {
     width: auto;
     height: 320px;
-
   }
 }
 .profile-menu img {
@@ -208,13 +223,6 @@ textarea {
   opacity: 1;
 }
 //top sliderここまで//
-@media screen and (max-width: 768px) {
-  .slider-items {
-  max-width: 100%;
-  margin: 50px auto;
-  padding: 35px 0;
-  }
-}
 
 
 //about//
@@ -280,26 +288,26 @@ textarea {
   background: white;
   border-top: solid 3px #69821b;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-  tbody th {
-    width: 20%;
-  }
-  tbody td {
-    padding: 5px 0;
-    line-height: 2;
-  }
   .img {
     width: 250px;
     height: 250px;
-    object-fit: cover; //画像が潰れないように//
+  }
+  object-fit: cover; //画像が潰れないように//
+  tbody th {
+    width: 24%;
+    td {
+      padding: 5px 0;
+      line-height: 2;
     }
+  }
   .favorite {
     padding: 10px 0;
   }
-  .comment td{
-    padding: 10px 10px 20px 0;
-  }
   .comment th {
     width: 0;
+  }
+  .comment td{
+    padding: 10px 10px 20px 0;
   }
 }
 @media screen and (max-width: 1439px) {
@@ -314,11 +322,10 @@ textarea {
 //post-form//
 .form {
   margin-top: 20px;
+  dd {
+    margin-bottom: 20px;
+  }
 }
-.form dd {
-  margin-bottom: 20px;
-}
-
 
 
 //members//
@@ -341,41 +348,45 @@ textarea {
 }
 
 //event//
-.event {
-  margin-bottom: 10px;
-}
+
 .event-area {
   margin-bottom: 30px;
-}
-.event-content {
-  margin-bottom: 30px;
-  tbody td {
-    padding: 5px 0;
-    line-height: 1.5;
+  .event {
+    margin-bottom: 10px;
+    .event-content {
+      margin-bottom: 30px;
+      tbody td {
+        padding: 7px 0;
+        line-height: 1.5;
+      }
+    }
   }
+}
+.event-name{
+  font-size: 15px;
 }
 .season-link-s{
   margin-top: 30px;
   padding: 30px;
 }
-.season-link-s ul{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.season-link-s ul li a {
-  height: 40px;
-  width: 40px;
-  margin-left: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  white-space: nowrap;
-  background-color: #f6bfbc;
-  text-decoration: none;
-  float: left;
-}
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+    .season-link-s ul li a {
+      height: 40px;
+      width: 40px;
+      margin-left: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      white-space: nowrap;
+      background-color: #f6bfbc;
+      text-decoration: none;
+      float: left;
+    }
 
 //admin//
 .event-field img {
@@ -384,16 +395,15 @@ textarea {
 }
 .admin table {
   margin: 30px 0;
+  tr {
+    border-bottom: solid 1px #eee;
+    cursor: pointer;
+    th,td {
+      width: auto;
+      padding: 15px 0;
+    }
+  }
 }
-.admin table tr {
-  border-bottom: solid 1px #eee;
-  cursor: pointer;
-}
-.admin th,td {
-  width: auto;
-  padding: 15px 0;
-}
-
 .simple-calendar .table {
   margin-top: 0;
 }
@@ -405,7 +415,6 @@ textarea {
   width: 100%;
   z-index: 1030;
 }
-
 @media (min-width: 768px) {
   .navbar-fixed-left {
     width: 250px;
@@ -443,7 +452,6 @@ textarea {
     padding-top: 25px;
     width: 250px;
   }
-
   .navbar-fixed-left {
     right: auto !important;
     left: 0 !important;

@@ -10,7 +10,7 @@
           <%= form_for(@member) do |f| %>
           <%= render 'layouts/error_messages', resource: @member %>
           <div class="col-xs-12 col-md-3">
-            <%= attachment_image_tag @profile, :profile_image, id: "img_prev", fallback: "no_image", class: "profile-img" %>
+            <%= attachment_image_tag @member, :profile_image, id: "img_prev", fallback: "no_image", class: "profile-img" %>
             <%= f.attachment_field :profile_image %>
           </div>
 

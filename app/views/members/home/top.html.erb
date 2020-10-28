@@ -29,7 +29,7 @@
       </div>
 
       <div class="row">
-        <div class="calendar col-xs-12">
+        <div class="calendar col-xs-12" id="calender">
           <%= month_calendar events: @events do |date, events| %>
           <%= date.day %>
           <% events.each do |event| %>
