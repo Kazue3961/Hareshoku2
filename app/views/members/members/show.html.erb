@@ -9,14 +9,15 @@
         <div class="post-content col-xs-12 col-md-6 col-lg-4">
           <table class="post-block">
             <tr>
-              <th></th><td><%= link_to post_path(post) do %><%= attachment_image_tag post, :food_image, fallback: "no_image", class: "food-img" %></td>
+              <th></th><td><%= link_to post_path(post) do %>
+                <%= attachment_image_tag post, :food_image, fallback: "no_image", class: "food-img" %></td>
               <% end %>
             </tr>
             <tr>
               <th></th><td><%= post.date %></td>
             </tr>
             <tr>
-              <th></th><td><%= post.event.name %></td>
+              <th></th><td><strong><%= link_to post.event.name, events_path(season_id: post.event.season_id) %></strong></td>
             </tr>
             <tr>
               <th></th><td><%= post.food %></td>
@@ -27,9 +28,11 @@
             <% if member_signed_in? %>
               <tr>
                 <th></th>
-                  <td><%= link_to post_path(post) do %><i class="fas fa-heart fa-lg" style="color: #ee827c;"></i>
+                  <td><%= link_to post_path(post) do %>
+                        <i class="fas fa-heart fa-lg" style="color: #ee827c;"></i>
                         <%= post.favorites.count %>
-                      <%= link_to post_path(post) do %><i class="fas fa-comment fa-lg"></i>
+                      <%= link_to post_path(post) do %>
+                        <i class="fas fa-comment fa-lg"></i>
                         <%= post.comments.count %>
                       <% end %>
                       <% end %>

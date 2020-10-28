@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admins_home_top_path
     when Member
-      root_path
+      member_path(resource)
     end
   end
 

@@ -14,8 +14,8 @@ Admin.create!(
 Member.create!(
   [
     {
-      name: 'はるの',
-      profile: 'お汁粉や桜餅、お団子など甘いものが好きです。',
+      name: 'はるの(test_user)',
+      profile: 'お汁粉や桜餅、お団子など甘いものが好きで、よく手作りします。',
       profile_image: open("./db/seeds_images/profile1.jpg"),
       email: 'test@com',
       password: '000000'
@@ -107,7 +107,7 @@ Post.create!(
       event_id: 3,
       date: '2020-10-1',
       food: 'お月見だんご',
-      content: '屋上で月を眺めながら手作り団子を食べました！',
+      content: '屋上で月を眺めながら手作り団子を食べました！とっても美味しかったです。',
       food_image: File.open("./app/assets/images/about5.png")
     },
     {
@@ -120,11 +120,19 @@ Post.create!(
     },
     {
       member_id: 2,
-      event_id: 5,
+      event_id: 4,
       date: '2021-1-1',
       food: 'お節料理',
-      content: '今度のお正月はお節を手作りします',
+      content: '黒豆や野菜の煮物にはこだわりました！',
       food_image: File.open("./app/assets/images/about4.png")
+    },
+    {
+      member_id: 3,
+      event_id: 6,
+      date: '2021-1-7',
+      food: '七草粥',
+      content: '今年はたくさん作りしました',
+      food_image: File.open("./app/assets/images/about2.png")
     },
     {
       member_id: 3,
@@ -149,12 +157,16 @@ Favorite.create!(
       post_id:1,
     },
     {
-      member_id: 1,
-      post_id: 4,
+      member_id: 3,
+      post_id: 2,
     },
     {
       member_id: 1,
       post_id: 3,
+    },
+    {
+      member_id: 1,
+      post_id: 4,
     }
   ]
   )
@@ -172,9 +184,14 @@ Comment.create!(
       comment: 'おいしさが伝わってきます。'
     },
     {
-      member_id: 1,
+      member_id: 3,
       post_id: 2,
-      comment: 'わたしも食べましたよ！'
+      comment: 'わたしも食べましたよ！。'
+    },
+    {
+      member_id: 1,
+      post_id: 3,
+      comment: 'わたしも作りましたよ〜！'
     },
     {
       member_id: 1,

@@ -39,4 +39,3 @@ $(document).on("turbolinks:load", function(){
     readURL(this);
   });
 });
-
