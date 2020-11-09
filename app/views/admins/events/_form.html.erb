@@ -3,7 +3,7 @@
     <div class="form col-xs-12 col-md-7">
       <dl>
 		  <dt><%= f.label "行事季節" %></dt>
-		  <dd><%= f.collection_select :season_id, Season.all, :id, :name %></dd>
+		  <dd><%= f.collection_select :season_id, Season.all, :id, :name, :prompt => "選択してください" %></dd>
 
 		  <dt><%= f.label "行事日" %></dt>
 		  <dd><%= f.date_field :start_time %></dd>

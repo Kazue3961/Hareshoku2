@@ -17,7 +17,7 @@
         </tr>
         <tr>
           <th>プロフィール画像</th>
-          <td><%= attachment_image_tag @member, :profile_image, :size => "100x100", fallback: "no_image" %></td>
+          <td><%= attachment_image_tag @member, :profile_image, :size => "100x100", fallback: "no_image", class: "profile-img" %></td>
         </tr>
         <tr>
           <th>会員ステータス</th>

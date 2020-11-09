@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-xs-12">
       <h1>投稿詳細</h1>
-      <%= flash[:notice] %>
         <div class="row post-detail">
           <div class="post-img col-md-12 col-lg-5">
             <%= attachment_image_tag @post, :food_image, fallback: "no_image", class: "food-img" %>
@@ -33,14 +32,14 @@
               <div class="favorite">
                 <% if @post.favorited_by?(current_member) %>
                   <td>
-                    <%= link_to post_favorite_path(@post.id),  method: :delete do %>
+                    <%= link_to post_favorite_path(@post.id), method: :delete do %>
                     <i class="fas fa-heart fa-lg" style="color: #ee827c;"></i>
                       <%= @post.favorites.count %>
                     <% end %>
                   </td>
                 <% else %>
                   <td>
-                    <%= link_to post_favorites_path(@post.id),  method: :post do %>
+                    <%= link_to post_favorites_path(@post.id), method: :post do %>
                     <i class="far fa-heart fa-lg"></i>
                       <%= @post.favorites.count %>
                     <% end %>
@@ -49,57 +48,54 @@
               </div>
 
               <div class="comment">
-                <strong>コメント</strong>　<%= @post.comments.count %>
-                  <% @comments.each do |comment| %>
-                    <table>
-                      <tr>
-                        <th></th>
-                          <td><%= attachment_image_tag comment.member, :profile_image, fallback: "no_image", class: "member-icon" %></td>
-                        <th></th>
-                          <td><strong><%= link_to member_path(comment.member) do %><%= comment.member.name %></strong></td>
-                        <th></th>
-                          <td><%= comment.comment %></td>
-                        <% if current_member. == comment.member %>
-                        <th></th>
-                          <td><%= link_to "　＞削除する", post_comment_path(@post, comment), method: :delete %></td>
-                          <% end %>
-                          <% end %>
-                      </tr>
-                      <% end %>
-                   </table>
-              </div>
+                <i class="fas fa-comment fa-lg"></i>
+                  <%= @post.comments.count %>
+                    <% @comments.each do |comment| %>
+                      <table>
+                        <tr>
+                          <th></th>
+                            <td><%= attachment_image_tag comment.member, :profile_image, fallback: "no_image", class: "member-icon" %></td>
+                          <th></th>
+                            <td><strong><%= link_to member_path(comment.member) do %><%= comment.member.name %></strong></td>
+                          <th></th>
+                            <td><%= comment.comment %></td>
+                          <% if current_member. == comment.member %>
+                          <th></th>
+                            <td><%= link_to "　＞削除する", post_comment_path(@post, comment), method: :delete %></td>
+                            <% end %>
+                            <% end %>
+                        </tr>
+                        <% end %>
+                     </table>
+                </div>
 
-              <div class="comment_form">
-                <% if @post.favorited_by?(current_member) %>
-                  <p>※いいねしたらコメントを送ろう！</p>
-                  <%= form_for [@post, @comment] do |f| %>
-                  <%= f.text_area :comment %>
-                  <%= f.submit 'コメントする', class: "btn" %>
+                <div class="comment_form">
+                  <% if @post.favorited_by?(current_member) %>
+                    <p>※いいねしたらコメントを送ろう！</p>
+                    <%= form_for [@post, @comment] do |f| %>
+                    <%= f.text_area :comment %>
+                    <%= f.submit 'コメントする', class: "btn" %>
+                    <% end %>
+                    <% end %>
+                  <% elsif %>
+                  <div></div>
                   <% end %>
-                  <% end %>
-                <% elsif %>
-                <div></div>
-                <% end %>
-              </div>
+                </div>
+            </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="col-xs-12">
-            <% if member_signed_in? %>
-              <%= link_to edit_post_path do %>
-                <button type="button" class="btn btn-md">編集する</button>
-              <% end %>
-               <%= link_to member_path(current_member) do %>
-                <button type="button" class="btn btn-md">戻る</button>
-                <% end %>
-            <% else %>
-              <%= link_to posts_path do %>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= link_to :back do %>
                 <button type="button" class="btn btn-md">戻る</button>
               <% end %>
-            <% end %>
+              <% if member_signed_in? %>
+                <%= link_to edit_post_path do %>
+                  <button type="button" class="btn btn-md">編集する</button>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-        </div>
 
     </div>
   </div>

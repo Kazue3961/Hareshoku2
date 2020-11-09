@@ -1,56 +1,56 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="profile-area col-xs-12">
-      <%= render 'members/members/profile', member: @member %>
-    </div>
+    <div class="col-xs-12">
 
-    <div class="row">
-      <% @member.posts.each do |post| %>
-        <div class="post-content col-xs-12 col-md-6 col-lg-4">
-          <table class="post-block">
-            <tr>
-              <th></th><td><%= link_to post_path(post) do %>
-                <%= attachment_image_tag post, :food_image, fallback: "no_image", class: "food-img" %></td>
-              <% end %>
-            </tr>
-            <tr>
-              <th></th><td><%= post.date %></td>
-            </tr>
-            <tr>
-              <th></th><td><strong><%= link_to post.event.name, events_path(season_id: post.event.season_id) %></strong></td>
-            </tr>
-            <tr>
-              <th></th><td><%= post.food %></td>
-            </tr>
-            <tr>
-              <th></th><td><%= post.content.truncate(18) %></td>
-            </tr>
-            <% if member_signed_in? %>
+      <%= render 'members/members/profile', member: @member %>
+
+      <div class="row">
+        <% @member.posts.each do |post| %>
+          <div class="post-content col-xs-12 col-md-6 col-lg-4">
+            <table class="post-block">
               <tr>
-                <th></th>
-                  <td><%= link_to post_path(post) do %>
+                <th></th><td><%= link_to post_path(post) do %>
+                  <%= attachment_image_tag post, :food_image, fallback: "no_image", class: "food-img" %></td>
+                <% end %>
+              </tr>
+              <tr>
+                <th></th><td><%= post.date %></td>
+              </tr>
+              <tr>
+                <th></th><td><strong><%= link_to post.event.name, events_path(season_id: post.event.season_id) %></strong></td>
+              </tr>
+              <tr>
+                <th></th><td><%= post.food %></td>
+              </tr>
+              <tr>
+                <th></th><td><%= post.content.truncate(18) %></td>
+              </tr>
+              <% if member_signed_in? %>
+                <tr>
+                  <th></th>
+                    <td><%= link_to post_path(post) do %>
                         <i class="fas fa-heart fa-lg" style="color: #ee827c;"></i>
                         <%= post.favorites.count %>
-                      <%= link_to post_path(post) do %>
+                        <%= link_to post_path(post) do %>
                         <i class="fas fa-comment fa-lg"></i>
                         <%= post.comments.count %>
                       <% end %>
                       <% end %>
-                  </td>
-              </tr>
-            <% else %>
-              <tr>
-                <th></th>
-              </tr>
-            <% end %>
-
-            <% if @member == current_member %>
-            <tr>
-              <th></th><td><%= link_to "編集する", edit_post_path(post) %></td>
+                    </td>
+                </tr>
+              <% else %>
+                <tr>
+                  <th></th>
+                </tr>
               <% end %>
-            </tr>
-          </table>
-        </div>
+
+              <% if @member == current_member %>
+              <tr>
+                <th></th><td><%= link_to "編集する", edit_post_path(post) %></td>
+                <% end %>
+              </tr>
+            </table>
+          </div>
         <% end %>
       </div>
 
@@ -62,6 +62,6 @@
         </div>
       </div>
 
+    </div>
   </div>
 </div>
-

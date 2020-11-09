@@ -9,13 +9,13 @@
 
     <div class="form col-xs-12 col-md-7">
       <dl>
-        <dt><%= f.label "楽しむ・楽しんだ日" %></dt>
+        <dt><%= f.label "楽しんだ日" %></dt>
         <dd><%= f.date_field :date %></dd>
 
         <dt><%= f.label "行事名" %></dt>
-        <dd><%= f.collection_select :event_id, Event.all, :id, :name %></dd>
+        <dd><%= f.collection_select :event_id, Event.all, :id, :name, :prompt => "選択してください" %></dd>
 
-        <dt><%= f.label "ハレ食(行事食)" %></dt>
+        <dt><%= f.label "ハレ食（行事食）" %></dt>
         <dd><%= f.text_field :food %></dd>
 
         <dt><%= f.label "詳しく" %></dt>
