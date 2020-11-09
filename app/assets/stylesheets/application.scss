@@ -26,21 +26,7 @@
  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300&display=swap');
 
 
-//共通//
-.container-fluid {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 80px;
-    padding-right: 90px;
-}
-@media screen and (max-width: 768px) {
-  .container-fluid {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-
-body {
+ body {
   padding-top: 70px;
   color: #765c47;
   font-family:'Avenir','Arial','Noto Sans JP', sans-serif;
@@ -53,32 +39,32 @@ body {
     background-color: transparent;
   }
   h1, h2 {
-  margin-top: 50px;
-  margin-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 30px;
   }
   h1 {
-  font-size: 30px;
+    font-size: 30px;
   }
   h2 {
-  font-size: 24px;
+    font-size: 24px;
   }
   img {
-  max-width: 100%;
+    max-width: 100%;
   }
   .btn {
-  background-color: #c97586;
-  border-color: #c97586;
-  color: #fff;
-  margin: 10px 0;
+    background-color: #c97586;
+    border-color: #c97586;
+    color: #fff;
+    margin: 10px 0;
   }
   .btn-danger {
-  background-color: #f6ad49;
-  border-color: #f6ad49;
-  color: #fff;
-  margin: 10px;
+    background-color: #f6ad49;
+    border-color: #f6ad49;
+    color: #fff;
+    margin: 10px;
   }
   table {
-    margin: 30px 0;
+    margin-bottom: 30px;
       th,td {
         width: auto;
         padding: 15px 0;
@@ -97,6 +83,7 @@ body {
   }
 }
 
+//共通//
 textarea {
   width: 450px;
   height: 150px;
@@ -108,9 +95,25 @@ textarea {
   }
 }
 
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 80px;
+  padding-right: 90px;
+}
+@media screen and (max-width: 768px) {
+  .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
 .search {
   margin: 40px 30px;
   font-size: 11px;
+}
+.simple-calendar .table {
+  margin-top: 0;
 }
 
 //kaminari//
@@ -128,7 +131,7 @@ textarea {
 
 //画像関係//
 .about-top-img {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .member-icon {
   width: 30px;
@@ -140,37 +143,29 @@ textarea {
   width: 95px;
   height: auto;
 }
-.food-img, .event-img {
+.food-img {
   width: 270px;
   height: 270px;
   object-fit: cover;
 }
-.food-img:hover {
-  opacity: 0.6;
+.food-img:hover, .season-link:hover {
+  opacity: 0.7;
 }
-
+.event-img {
+  height: 240px;
+  object-fit: cover;
+}
 @media screen and (max-width: 768px) {
-  .food-img, .event-img {
+  .event-img {
+    width: auto;
+    height: 300px;
+  }
+  .food-img {
     width: 400px;
     height: 400px;
     object-fit: cover;
   }
 }
-.event-img {
-  width: auto;
-  height: 240px;
-
-}
-@media screen and (max-width: 768px) {
-  .event-img {
-    width: auto;
-    height: 320px;
-  }
-}
-.profile-menu img {
-  width: 17px;
-}
-
 
 //sign_in up//
 .field {
@@ -180,7 +175,7 @@ textarea {
   margin: 20px 0;
 }
 
- //top//
+//top//
 .category, .calendar {
   margin-top: 5em;
 }
@@ -267,7 +262,7 @@ textarea {
 
 //post-index//
 .post-block {
-  margin: 0.5em;
+
   background: white;
   border-top: solid 3px #69821b;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
@@ -288,30 +283,30 @@ textarea {
   background: white;
   border-top: solid 3px #69821b;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-  .img {
-    width: 250px;
-    height: 250px;
-  }
-  object-fit: cover; //画像が潰れないように//
   tbody th {
-    width: 24%;
+    width: 32%;
     td {
       padding: 5px 0;
       line-height: 2;
     }
   }
   .favorite {
-    padding: 10px 0;
+    padding-bottom: 20px;
   }
-  .comment th {
-    width: 0;
-  }
-  .comment td{
-    padding: 10px 10px 20px 0;
+  .comment{
+    table {
+      margin: 0;
+    }
+    th {
+      width: 0;
+    }
+    td {
+      padding: 10px 10px 20px 0;
+    }
   }
 }
 @media screen and (max-width: 1439px) {
-  .post-image{
+  .post-img{
     display: flex;
   }
   .post-index tbody th {
@@ -319,14 +314,10 @@ textarea {
   }
 }
 
-//post-form//
-.form {
-  margin-top: 20px;
-  dd {
-    margin-bottom: 20px;
-  }
+//post-new/edit member_edit//
+.form dd {
+  margin-bottom: 20px;
 }
-
 
 //members//
 .profile-img {
@@ -340,53 +331,35 @@ textarea {
   margin-bottom: 15px;
   line-height: 1.7;
 }
-.profile-menu {
-  margin: 30px 0;
-  table th {
-    padding-right: 15px;
-  }
+.profile-menu img {
+  margin-bottom: 4px;
+  width: 17px;
 }
+
 
 //event//
-
-.event-area {
-  margin-bottom: 30px;
-  .event {
-    margin-bottom: 10px;
-    .event-content {
-      margin-bottom: 30px;
-      tbody td {
-        padding: 7px 0;
-        line-height: 1.5;
-      }
-    }
-  }
-}
-.event-name{
-  font-size: 15px;
-}
 .season-link-s{
   margin-top: 30px;
   padding: 30px;
 }
-  ul{
+ul{
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-    .season-link-s ul li a {
-      height: 40px;
-      width: 40px;
-      margin-left: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      white-space: nowrap;
-      background-color: #f6bfbc;
-      text-decoration: none;
-      float: left;
-    }
+}
+.season-link-s ul li a {
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  white-space: nowrap;
+  background-color: #f6bfbc;
+  text-decoration: none;
+  float: left;
+}
 
 //admin//
 .event-field img {
@@ -404,8 +377,8 @@ textarea {
     }
   }
 }
-.simple-calendar .table {
-  margin-top: 0;
+.text_field {
+  margin-top: 30px;
 }
 
 // sidebar //

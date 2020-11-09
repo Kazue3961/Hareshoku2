@@ -2,11 +2,26 @@
   <div class="row">
     <div class="col-xs-12">
 
-      <%= render 'members/posts/index', post: @post %>
+      <div class="row">
+        <h1>みんなのハレ食</h1>
+          <% @posts.each do |post| %>
+                <%= render 'members/posts/index', post: post %>
+                  <tr>
+                    <th></th>
+                    <td><%= attachment_image_tag post.member, :profile_image, fallback: "no_image", class: "member-icon" %>
+                        <strong><%= link_to member_path(post.member) do %><%= post.member.name %></strong>
+                        <% end %>
+                    </td>
+                  </tr>
+              </table>
+            </div>
+          <% end %>
+      </div>
+
       <div class="col-xs-12">
         <%= paginate @posts %>
       </div>
 
-      </div>
+    </div>
   </div>
 </div>

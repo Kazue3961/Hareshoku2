@@ -2,24 +2,44 @@
   <div class="row">
     <div class="col-xs-12">
       <h1>検索結果です</h1>
-      <% if @post_or_member == "1" %>
-      　　<%= render 'members/posts/index', post: @post %>
-      <% elsif @post_or_member == "2" %>
-      <h2>該当するハレ友はこちら</h2>
-      <table>
-      <% @members.each do |member| %>
-      　　<thead>
-        　　<tr>
-          　　<th></th>
-          　　<td><%= attachment_image_tag member, :profile_image, fallback: "no_image", class: "member-icon"%>
-            　　　<%= link_to member_path(member) do %><%= member.name %></td>
-          　　<% end %>
-        　　</tr>
-      　　</thead>
-      <% end %>
-      </table>
-      <% else %>
-      <% end %>
+        <% if @post_or_member == "1" %>
+          <div class="row">
+            <h2>みんなのハレ食</h2>
+              <% @posts.each do |post| %>
+                    <%= render 'members/posts/index', post: post %>
+                      <tr>
+                        <th></th>
+                        <td><%= attachment_image_tag post.member, :profile_image, fallback: "no_image", class: "member-icon" %>
+                          <strong><%= link_to member_path(post.member) do %><%= post.member.name %></strong>
+                          <% end %>
+                        </td>
+                      </tr>
+                  </table>
+                </div>
+              <% end %>
+          </div>
+
+        <% elsif @post_or_member == "2" %>
+          <div class="row">
+            <div class="col-xs-12" >
+            <h2>該当するハレ友はこちら</h2>
+            <table>
+              <% @members.each do |member| %>
+              <thead>
+                <tr>
+                  <th></th>
+                  <td><%= attachment_image_tag member, :profile_image, fallback: "no_image", class: "member-icon"%>
+                    <%= link_to member_path(member) do %><%= member.name %>
+                  </td>
+                  <% end %>
+                </tr>
+              </thead>
+              <% end %>
+            </table>
+          </div>
+        <% else %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

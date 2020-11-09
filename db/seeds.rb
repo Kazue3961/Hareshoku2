@@ -24,7 +24,7 @@ Member.create!(
       name: 'ふうた',
       profile: '皆さんと一緒にたのしみたいです。',
       profile_image: open("./db/seeds_images/profile2.jpg"),
-      email: 'mori@com',
+      email: 'futa@com',
       password: '111111'
     },
     {
@@ -119,8 +119,16 @@ Post.create!(
       food_image: File.open("./app/assets/images/about6.png")
     },
     {
+      member_id: 3,
+      event_id: 1,
+      date: '2020-5-5',
+      food: '柏餅',
+      content: '今年はあんこを炊いて、柏餅を手作りしました',
+      food_image: File.open("./app/assets/images/slide3.png")
+    },
+    {
       member_id: 2,
-      event_id: 4,
+      event_id: 5,
       date: '2021-1-1',
       food: 'お節料理',
       content: '黒豆や野菜の煮物にはこだわりました！',
@@ -133,14 +141,6 @@ Post.create!(
       food: '七草粥',
       content: '今年はたくさん作りしました',
       food_image: File.open("./app/assets/images/about2.png")
-    },
-    {
-      member_id: 3,
-      event_id: 1,
-      date: '2020-5-5',
-      food: '柏餅',
-      content: '今年はあんこを炊いて、柏餅を手作りしました',
-      food_image: File.open("./app/assets/images/slide3.png")
     }
   ]
   )
@@ -186,7 +186,7 @@ Comment.create!(
     {
       member_id: 3,
       post_id: 2,
-      comment: 'わたしも食べましたよ！。'
+      comment: 'わたしも食べましたよ！'
     },
     {
       member_id: 1,
@@ -200,3 +200,4 @@ Comment.create!(
     }
   ]
   )
+
