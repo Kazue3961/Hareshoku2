@@ -12,8 +12,6 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.inview.min.js"></script>
   </head>
 
   <body>
@@ -39,60 +37,18 @@
           <ul class="nav navbar-nav">
 
             <% if admin_signed_in? %>
-              <li><%= link_to "top", admins_top_path %></li>
-              <li><%= link_to "event", admins_events_path %></li>
-              <li><%= link_to "season", admins_seasons_path %></li>
-              <li><%= link_to "member", admins_members_path %></li>
-              <li><%= link_to "log out", destroy_admin_session_path, method: :delete %></li>
+            <%= render 'layouts/admins' %>
 
             <% elsif member_signed_in? %>
-              <li><%= link_to "top", root_path %></li>
-              <li><%= link_to "about", about_path %></li>
-              <li><%= link_to "posts", posts_path %></li>
-              <li class="dropdowm">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">season page<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "春 spring", events_path(season_id: 1) %></li>
-                  <li><%= link_to "夏 summer", events_path(season_id: 2) %></li>
-                  <li><%= link_to "秋 autumn", events_path(season_id: 3) %></li>
-                  <li><%= link_to "冬 winter", events_path(season_id: 4) %></li>
-                </ul>
-              </li>
-              <li><%= link_to "mypage", member_path(id: current_member.id) %></li>
-              <li><%= link_to "log out", destroy_member_session_path, method: :delete %>
-              </li>
+            <%= render 'layouts/members' %>
 
             <% else %>
-              <li><%= link_to "top", root_path %></li>
-              <li><%= link_to "about", about_path %></li>
-              <li><%= link_to "posts", posts_path %></li>
-              <li class="dropdowm">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">season page<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "春 spring", events_path(season_id: 1) %></li>
-                  <li><%= link_to "夏 summer", events_path(season_id: 2) %></li>
-                  <li><%= link_to "秋 autumn", events_path(season_id: 3) %></li>
-                  <li><%= link_to "冬 winter", events_path(season_id: 4) %></li>
-                </ul>
-              </li>
-              <li><%= link_to "sign up", new_member_registration_path %></li>
-              <li><%= link_to "log in", new_member_session_path %></li>
+            <%= render 'layouts/others' %>
             <% end %>
           </ul>
 
           <!-- 検索 -->
-          <% if admin_signed_in? %>
-            <div class="search">
-            </div>
-          <% elsif %>
-            <div class="search">
-              <%= form_tag(search_path, :method => 'get') do %>
-                <%= select_tag(:category, options_for_select([["ハレ食", "1"],["ハレ友","2"]]))%><br>
-                <%= text_field_tag :search %><br>
-                <%= submit_tag '探してみる'%>
-              <% end %>
-            </div>
-          <% end %>
+          <%= render 'layouts/search' %>
         </div>
 
       </div>
