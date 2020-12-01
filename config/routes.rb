@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :members do
+    get 'search/search'
+  end
+  get 'search/search'
   devise_for :members, controllers: {
   sessions:      'members/sessions',
   passwords:     'members/passwords',
@@ -12,7 +16,7 @@ Rails.application.routes.draw do
     get 'about' => 'home#about', as: 'about'
     patch 'members/withdraw' => 'members#withdraw', as: 'members_withdraw'
     put 'members/withdraw' => 'members#withdraw'
-    get 'search' => 'posts#search'
+    get 'search' => 'search#search'
     resources :members, only: [:show, :edit, :update]
     resources :posts do
       resources :favorites, only: [:index, :create, :destroy]

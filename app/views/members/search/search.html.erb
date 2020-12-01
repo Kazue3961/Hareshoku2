@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <h1>検索結果です</h1>
-        <% if @post_or_member == "1" %>
+        <% if @post_or_member == "post" %>
           <div class="row">
             <h2>みんなのハレ食</h2>
               <% @posts.each do |post| %>
@@ -19,7 +19,7 @@
               <% end %>
           </div>
 
-        <% elsif @post_or_member == "2" %>
+        <% elsif @post_or_member == "member" %>
           <div class="row">
             <div class="col-xs-12" >
             <h2>該当するハレ友はこちら</h2>

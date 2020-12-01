@@ -46,15 +46,6 @@ class Members::PostsController < ApplicationController
     redirect_to member_path(@member)
   end
 
-  def search
-    @post_or_member = params[:category]
-    if @post_or_member == "1"
-      @posts = Post.search(params[:search], @post_or_member)
-    else
-      @members = Member.search(params[:search], @post_or_member)
-    end
-  end
-
 
   private
   def post_params

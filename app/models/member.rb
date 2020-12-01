@@ -40,7 +40,7 @@ class Member < ApplicationRecord
   end
 
   def Member.search(search, post_or_member)
-    if post_or_member == "2"
+    if post_or_member == "member"
       Member.where(['name LIKE ?', "%#{search}%"])
     else
       Member.all

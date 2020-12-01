@@ -20,7 +20,7 @@ class Post < ApplicationRecord
   end
 
   def Post.search(search, post_or_member)
-    if post_or_member == "1"
+    if post_or_member == "post"
       Post.where(['food LIKE ?', "%#{search}%"])
     else
       Post.all
